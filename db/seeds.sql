@@ -1,0 +1,45 @@
+INSERT INTO department (name)
+VALUES  ("Booking Delivery"),
+        ("Board"),
+        ("Finance"),
+        ("HR"),
+        ("IT"),
+        ("Marketing"),
+        ("Office Administration"),
+        ("Product"),
+        ("Sales"),
+        ("Trade");
+
+INSERT INTO role (title, salary, department_id)
+VALUES  ("Director", 200000, 2),
+        ("Branch Integrator", 150000, 9),
+        ("Travel Consultant", 50000, 9),
+        ("Travel Consultant (Senior)", 70000, 9),
+        ("Sales Team Leader", 80000, 9),
+        ("Head of Sales", 95000, 9),
+        ("HR Specialist", 60000, 4),
+        ("Head of HR", 80000, 4),
+        ("Finance Specialist", 65000, 3),
+        ("Head of Finance", 85000, 3),
+        ("IT Specialist", 60000, 5),
+        ("Head of IT", 100000, 5),
+        ("Marketing Specialist", 55000, 6),
+        ("Head of Marketing", 110000, 6),
+        ("Office Administrator", 45000, 7),
+        ("Product Specialist", 45000, 8),
+        ("Head of Product", 70000, 8),
+        ("Trade Specialist", 55000, 10),
+        ("Head of Trade", 85000, 10);
+
+INSERT INTO employee (first_name, last_name, role_id, manager_id)
+VALUES  ("Emil", "Abraham", 1, NULL),
+        ("Leela", "Campos", 2, 1),
+        ("Ramesha", "Alting", 5, 11),
+        ("Taka", "Mizuno", 8, 1),
+        ("Kasi", "Clery", 10, 1),
+        ("Valentin", "Faraldo", 14, 1),
+        ("Benjamin", "Byrd", 3, 3),
+        ("Ben", "Farmer", 3, 3),
+        ("Heracles ", "Becke", 4, 3),
+        ("Bandile", "Suess", 9, 5),
+        ("Renee", "Barkins", 6, 1);
