@@ -1,15 +1,17 @@
 // Initialize connection to server using variables from .env file
 
+const Sequelize = require('sequelize');
 require('dotenv').config();
-const mysql = require('mysql2');
 
-const connection = mysql.createConnection(
+const connection = new Sequelize(
+  process.env.DB_NAME,
+  process.env.DB_USER,
+  process.env.DB_PASSWORD,
   {
-    host: process.env.DB_NAME,
-    user: process.env.DB_USER,
-    database: process.env.DB_PASSWORD
-  },
-  console.log('Connected to the employees_db database.')
+    host: 'localhost',
+    dialect: 'mysql',
+    port: 3306,
+  }
 );
 
 module.exports = connection;
