@@ -12,9 +12,6 @@ const app = express();
 // Designate port for express (either from .env or 3001 by default)
 const PORT = process.env.PORT || 3001;
 
-// Import utilities for asking prompts.
-const prompts = require("./utils/prompts");
-
 // Import startApp js for beginning the inquirer prompts.
 const startApp = require("./startApp");
 
@@ -31,5 +28,7 @@ const db = mysql.createConnection(
     password: process.env.DB_PASS,
     database: process.env.DB_NAME || 'employees_db'
   },
-  startApp(prompts)
 );
+
+// Initiate the inquirer app
+startApp();
