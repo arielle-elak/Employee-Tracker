@@ -20,15 +20,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Connect to database
-const db = mysql.createConnection(
-  {
-    host: process.env.DB_HOST || 'localhost',
-    // MySQL username,
-    user: process.env.DB_USER || 'root',
-    password: process.env.DB_PASS,
-    database: process.env.DB_NAME || 'employees_db'
-  },
-);
-
-// Initiate the inquirer app
-startApp();
+// Start Inquirer program
+connection.sync({ force: false }).then(() => {
+  app.listen(PORT, () => startApp());
+});
