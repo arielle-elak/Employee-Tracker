@@ -1,3 +1,4 @@
+// MENU OPTIONS FOR LOGIC FLOW
 const inquirer = require("inquirer");
 
 // 1) TOP Menu Prompts
@@ -283,5 +284,13 @@ module.exports = {
   addDepPrompts,
   addEmpPrompts,
   addRolePrompts,
-  updatePrompts
+  updatePrompts,
+  updateDepPrompts,
+  updateEmpPrompts,
+  updateEmpFName,
+  updateEmpLName,
+  updateEmpDep,
+  updateEmpRole,
+  updateEmpMan,
+  updateEmpSal
 };
