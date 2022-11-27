@@ -12,12 +12,18 @@ const app = express();
 // Designate port for express (either from .env or 3001 by default)
 const PORT = process.env.PORT || 3001;
 
+// Import utilities for asking prompts.
+const prompts = require("./utils/prompts");
+
+// Import startApp js for beginning the inquirer prompts.
+const startApp = require("./startApp");
+
 // Express middleware to interpret json input
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Connect to database
-const db = mysql.createConnection (
+const db = mysql.createConnection(
   {
     host: process.env.DB_HOST || 'localhost',
     // MySQL username,
@@ -25,5 +31,5 @@ const db = mysql.createConnection (
     password: process.env.DB_PASS,
     database: process.env.DB_NAME || 'employees_db'
   },
-  console.log(`Welcome to the Employee Tracker!`)
+  startApp(prompts)
 );

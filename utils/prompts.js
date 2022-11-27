@@ -1,5 +1,4 @@
 // MENU OPTIONS FOR LOGIC FLOW
-const inquirer = require("inquirer");
 
 // 1) TOP Menu Prompts
 const topMenuPrompts = [
@@ -66,7 +65,7 @@ const addDepPrompts = [
     message: `Please select all roles contained within this department:`,
     // TODO Sync Choices with sql database table
     choices: ["SQL CHOICES"],
-  }
+  },
 ];
 
 // 3b) ADD EMPLOYEE Menu Prompts
@@ -85,7 +84,7 @@ const addEmpPrompts = [
   {
     type: "input",
     name: "addEmpPrompts2",
-    message: `${answers.addEmpPrompts1}'s Last Name:`,
+    message: `Employee's Last Name:`,
     validate: async (input) => {
       if (!input) {
         return "Name cannot be blank.";
@@ -96,7 +95,7 @@ const addEmpPrompts = [
   {
     type: "input",
     name: "addEmpPrompts3",
-    message: `What is ${answers.addEmpPrompts1} ${answers.addEmpPrompts2}'s Role?`,
+    message: `Role:`,
     validate: async (input) => {
       if (!input) {
         return "Role cannot be blank.";
@@ -107,17 +106,17 @@ const addEmpPrompts = [
   {
     type: "list",
     name: "addEmpPrompts4",
-    message: `Who is ${answers.addEmpPrompts1} ${answers.addEmpPrompts2}'s Manager?`,
+    message: `Manager:`,
     // TODO Sync Choices with sql database table
     choices: ["SQL CHOICES"],
   },
   {
     type: "list",
     name: "addEmpPrompts5",
-    message: `What is ${answers.addEmpPrompts1} ${answers.addEmpPrompts2}'s Department?`,
+    message: `Department:`,
     // TODO Sync Choices with sql database table
     choices: ["SQL CHOICES"],
-  }
+  },
 ];
 
 // 3c) ADD ROLE Menu Prompts
@@ -139,7 +138,7 @@ const addRolePrompts = [
     message: `Please select all departments that utilize this role:`,
     // TODO Sync Choices with sql database table
     choices: ["SQL CHOICES"],
-  }
+  },
 ];
 
 // 4) UPDATE Menu Prompts
@@ -148,12 +147,7 @@ const updatePrompts = [
     type: "list",
     name: "updatePrompts",
     message: `Update:`,
-    choices: [
-      "A Department",
-      "An Employee",
-      "A Role",
-      "<= Go Back"
-    ],
+    choices: ["A Department", "An Employee", "A Role", "<= Go Back"],
   },
 ];
 
@@ -192,7 +186,14 @@ const updateEmpPrompts = [
     type: "checkbox",
     name: "addEmpPrompts2",
     message: `What attribute(s) would you like to update?`,
-    choices: ["First Name", "Last Name", "Role", "Department", "Manager", "Salary"],
+    choices: [
+      "First Name",
+      "Last Name",
+      "Role",
+      "Department",
+      "Manager",
+      "Salary",
+    ],
   },
 ];
 
@@ -259,7 +260,6 @@ const updateEmpMan = [
   },
 ];
 
-
 // 4b6) UPDATE EMPLOYEE Salary
 const updateEmpSal = [
   {
@@ -274,7 +274,6 @@ const updateEmpSal = [
     },
   },
 ];
-
 
 module.exports = {
   topMenuPrompts,
@@ -292,5 +291,5 @@ module.exports = {
   updateEmpDep,
   updateEmpRole,
   updateEmpMan,
-  updateEmpSal
+  updateEmpSal,
 };
