@@ -12,8 +12,16 @@ const startApp = () => {
   });
 };
 
+// Choose how to route the inquirer
 const routeApp = (route) => {
-  console.log("App routed with " + route);
+  switch (route) {
+    case "View":
+      console.log("View " + route);
+      break;
+    case "Add":
+      console.log("Add " + route);
+      break;
+  };
 };
 
 module.exports = startApp;
