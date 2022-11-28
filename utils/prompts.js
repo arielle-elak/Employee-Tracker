@@ -14,7 +14,7 @@ const topMenuPrompts = [
 const viewPrompts = [
   {
     type: "list",
-    name: "viewPrompts",
+    name: "viewP",
     message: `View:`,
     choices: [
       "All Departments",
@@ -30,7 +30,7 @@ const viewPrompts = [
 const viewSearchPrompts = [
   {
     type: "list",
-    name: "viewSearchPrompts",
+    name: "viewSearch",
     message: `Search for:`,
     choices: ["A Department", "An Employee", "A Role", "<= Go Back"],
   },
@@ -40,7 +40,7 @@ const viewSearchPrompts = [
 const addPrompts = [
   {
     type: "list",
-    name: "addPrompts",
+    name: "addP",
     message: `Add:`,
     choices: ["A Department", "An Employee", "A Role", "<= Go Back"],
   },
@@ -50,7 +50,7 @@ const addPrompts = [
 const addDepPrompts = [
   {
     type: "input",
-    name: "addDepPrompts1",
+    name: "addDep1",
     message: `Please Type the Department to Add:`,
     validate: async (input) => {
       if (!input) {
@@ -61,7 +61,7 @@ const addDepPrompts = [
   },
   {
     type: "checkbox",
-    name: "addDepPrompts2",
+    name: "addDep2",
     message: `Please select all roles contained within this department:`,
     // TODO Sync Choices with sql database table
     choices: ["SQL CHOICES"],
@@ -72,7 +72,7 @@ const addDepPrompts = [
 const addEmpPrompts = [
   {
     type: "input",
-    name: "addEmpPrompts1",
+    name: "addEmp1",
     message: `Employee's First Name:`,
     validate: async (input) => {
       if (!input) {
@@ -83,7 +83,7 @@ const addEmpPrompts = [
   },
   {
     type: "input",
-    name: "addEmpPrompts2",
+    name: "addEmp2",
     message: `Employee's Last Name:`,
     validate: async (input) => {
       if (!input) {
@@ -94,7 +94,7 @@ const addEmpPrompts = [
   },
   {
     type: "input",
-    name: "addEmpPrompts3",
+    name: "addEmp3",
     message: `Role:`,
     validate: async (input) => {
       if (!input) {
@@ -105,14 +105,14 @@ const addEmpPrompts = [
   },
   {
     type: "list",
-    name: "addEmpPrompts4",
+    name: "addEmp4",
     message: `Manager:`,
     // TODO Sync Choices with sql database table
     choices: ["SQL CHOICES"],
   },
   {
     type: "list",
-    name: "addEmpPrompts5",
+    name: "addEmp5",
     message: `Department:`,
     // TODO Sync Choices with sql database table
     choices: ["SQL CHOICES"],
@@ -123,7 +123,7 @@ const addEmpPrompts = [
 const addRolePrompts = [
   {
     type: "input",
-    name: "addRolePrompts1",
+    name: "addRole1",
     message: `Please Type the Role to Add:`,
     validate: async (input) => {
       if (!input) {
@@ -134,7 +134,7 @@ const addRolePrompts = [
   },
   {
     type: "checkbox",
-    name: "addRolePrompts2",
+    name: "addRole2",
     message: `Please select all departments that utilize this role:`,
     // TODO Sync Choices with sql database table
     choices: ["SQL CHOICES"],
@@ -145,7 +145,7 @@ const addRolePrompts = [
 const updatePrompts = [
   {
     type: "list",
-    name: "updatePrompts",
+    name: "updateP",
     message: `Update:`,
     choices: ["A Department", "An Employee", "A Role", "<= Go Back"],
   },
@@ -155,14 +155,14 @@ const updatePrompts = [
 const updateDepPrompts = [
   {
     type: "list",
-    name: "updateDepPrompts1",
+    name: "updateDep1",
     message: `Please select the Department you wish to update:`,
     // TODO Sync Choices with sql database table
     choices: ["SQL CHOICES"],
   },
   {
     type: "input",
-    name: "updateDepPrompts2",
+    name: "updateDep2",
     message: `What is the new name of this Department?`,
     validate: async (input) => {
       if (!input) {
@@ -177,14 +177,14 @@ const updateDepPrompts = [
 const updateEmpPrompts = [
   {
     type: "autocomplete",
-    name: "updateEmpPrompts1",
+    name: "updateEmp1",
     message: `Please select or start typing the employee you wish to update:`,
     // TODO Sync Choices with sql database table
     choices: ["SQL CHOICES"],
   },
   {
     type: "checkbox",
-    name: "addEmpPrompts2",
+    name: "addEmp2",
     message: `What attribute(s) would you like to update?`,
     choices: [
       "First Name",
