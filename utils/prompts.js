@@ -21,7 +21,7 @@ const viewPrompts = [
       "All Employees",
       "All Roles",
       "Search",
-      "<= Go Back",
+      "<= Go Back"
     ],
   },
 ];

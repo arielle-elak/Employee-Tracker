@@ -1,5 +1,5 @@
 // Import utilities for asking prompts.
-const { topMenuPrompts } = require("./utils/prompts");
+const { topMenuPrompts } = require("./prompts");
 
 // Import inquirer
 const inquirer = require("inquirer");
@@ -8,7 +8,7 @@ const inquirer = require("inquirer");
 const startApp = () => {
   console.log(`Welcome to the Employee Tracker!`);
   inquirer.prompt(topMenuPrompts).then((answer) => {
-      routeApp(answer.topMenu);
+    routeApp(answer.topMenu);
   });
 };
 
@@ -21,7 +21,7 @@ const routeApp = (route) => {
     case "Add":
       console.log("Add " + route);
       break;
-  };
+  }
 };
 
 module.exports = startApp;
