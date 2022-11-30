@@ -1,5 +1,21 @@
 // Import utilities for asking prompts.
-const { topMenuPrompts } = require("./prompts");
+const {
+  topMenuPrompts,
+  viewPrompts,
+  addPrompts,
+  addDepPrompts,
+  addEmpPrompts,
+  addRolePrompts,
+  updatePrompts,
+  updateDepPrompts,
+  updateEmpPrompts,
+  updateEmpFName,
+  updateEmpLName,
+  updateEmpDep,
+  updateEmpRole,
+  updateEmpMan,
+  updateEmpSal,
+} = require("./prompts");
 
 // Import inquirer
 const inquirer = require("inquirer");
@@ -16,10 +32,30 @@ const startApp = () => {
 const routeApp = (route) => {
   switch (route) {
     case "View":
-      console.log("View " + route);
+      inquirer.prompt(viewPrompts).then((answer) => {
+        switch (answer.viewP) {
+          case "All Departments":
+            break;
+          case "All Employees":
+            break;
+          case "All Roles":
+            break;
+          case "Search Departments":
+            break;
+          case "Search Employees":
+            break;
+          case "Search Roles":
+            break;
+          case "<= Go Back":
+            break;
+        }
+      });
       break;
     case "Add":
-      console.log("Add " + route);
+      break;
+    case "Update":
+      break;
+    case "Delete":
       break;
   }
 };

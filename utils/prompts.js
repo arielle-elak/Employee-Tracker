@@ -20,21 +20,14 @@ const viewPrompts = [
       "All Departments",
       "All Employees",
       "All Roles",
-      "Search",
+      "Search Departments",
+      "Search Employees",
+      "Search Roles",
       "<= Go Back"
     ],
   },
 ];
 
-// 2a) VIEW SEARCH Menu Prompts
-const viewSearchPrompts = [
-  {
-    type: "list",
-    name: "viewSearch",
-    message: `Search for:`,
-    choices: ["A Department", "An Employee", "A Role", "<= Go Back"],
-  },
-];
 
 // 3) ADD Menu Prompts
 const addPrompts = [
@@ -278,7 +271,6 @@ const updateEmpSal = [
 module.exports = {
   topMenuPrompts,
   viewPrompts,
-  viewSearchPrompts,
   addPrompts,
   addDepPrompts,
   addEmpPrompts,
