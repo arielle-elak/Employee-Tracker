@@ -4,9 +4,6 @@ const express = require('express');
 // Connection config import
 const connection = require('./config/connection');
 
-// Import and require mysql2
-const mysql = require('mysql2');
-
 // Use app to say when express needs to be used
 const app = express();
 // Designate port for express (either from .env or 3001 by default)
