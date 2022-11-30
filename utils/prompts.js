@@ -17,17 +17,29 @@ const viewPrompts = [
     name: "viewP",
     message: `View:`,
     choices: [
-      "All Departments",
-      "All Employees",
-      "All Roles",
-      "Search Departments",
-      "Search Employees",
-      "Search Roles",
+      "Departments",
+      "Employees",
+      "Roles",
       "<= Go Back"
     ],
   },
 ];
 
+// 2a) EMPLOYEE VIEW Menu Prompts
+const viewEmployees = [
+  {
+    type: "list",
+    name: "viewEmp",
+    message: `By:`,
+    choices: [
+      "Department",
+      "Manager",
+      "Role",
+      "Salary",
+      "<= Go Back"
+    ],
+  },
+];
 
 // 3) ADD Menu Prompts
 const addPrompts = [
@@ -282,6 +294,7 @@ const deletePrompts = [
 module.exports = {
   topMenuPrompts,
   viewPrompts,
+  viewEmployees,
   addPrompts,
   addDepPrompts,
   addEmpPrompts,

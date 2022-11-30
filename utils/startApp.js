@@ -2,6 +2,7 @@
 const {
   topMenuPrompts,
   viewPrompts,
+  viewEmployees,
   addPrompts,
   addDepPrompts,
   addEmpPrompts,
@@ -35,17 +36,25 @@ const routeApp = (route) => {
     case "View":
       inquirer.prompt(viewPrompts).then((answer) => {
         switch (answer.viewP) {
-          case "All Departments":
+          case "Departments":
             break;
-          case "All Employees":
+          case "Employees":
+            inquirer.prompt(viewEmployees).then((answer) => {
+              switch (answer.viewEmp) {
+                case "Department":
+                  break;
+                case "Manager":
+                  break;
+                case "Role":
+                  break;
+                case "Salary":
+                  break;
+                case "<= Go Back":
+                  break;
+              }
+            });
             break;
-          case "All Roles":
-            break;
-          case "Search Departments":
-            break;
-          case "Search Employees":
-            break;
-          case "Search Roles":
+          case "Roles":
             break;
           case "<= Go Back":
             inquirer.prompt(topMenuPrompts).then((answer) => {
