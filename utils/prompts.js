@@ -268,6 +268,17 @@ const updateEmpSal = [
   },
 ];
 
+// 5) DELETE PROMPTS
+const deletePrompts = [
+  {
+    type: "list",
+    name: "deleteP",
+    message: `Delete:`,
+    choices: ["A Department", "An Employee", "A Role", "<= Go Back"]
+  }
+
+]
+
 module.exports = {
   topMenuPrompts,
   viewPrompts,
@@ -284,4 +295,5 @@ module.exports = {
   updateEmpRole,
   updateEmpMan,
   updateEmpSal,
+  deletePrompts
 };

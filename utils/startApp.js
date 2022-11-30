@@ -15,6 +15,7 @@ const {
   updateEmpRole,
   updateEmpMan,
   updateEmpSal,
+  deletePrompts,
 } = require("./prompts");
 
 // Import inquirer
@@ -47,15 +48,66 @@ const routeApp = (route) => {
           case "Search Roles":
             break;
           case "<= Go Back":
+            inquirer.prompt(topMenuPrompts).then((answer) => {
+              routeApp(answer.topMenu);
+            });
             break;
         }
       });
       break;
     case "Add":
+      inquirer.prompt(addPrompts).then((answer) => {
+        switch (answer.addP) {
+          case "A Department":
+            inquirer.prompt(addDepPrompts).then((answer) => {});
+            break;
+          case "An Employee":
+            inquirer.prompt(addEmpPrompts).then((answer) => {});
+            break;
+          case "A Role":
+            inquirer.prompt(addRolePrompts).then((answer) => {});
+            break;
+          case "<= Go Back":
+            inquirer.prompt(topMenuPrompts).then((answer) => {
+              routeApp(answer.topMenu);
+            });
+            break;
+        }
+      });
       break;
     case "Update":
+      inquirer.prompt(updatePrompts).then((answer) => {
+        switch (answer.updateP) {
+          case "A Department":
+            break;
+          case "An Employee":
+            break;
+          case "A Role":
+            break;
+          case "<= Go Back":
+            inquirer.prompt(topMenuPrompts).then((answer) => {
+              routeApp(answer.topMenu);
+            });
+            break;
+        }
+      });
       break;
     case "Delete":
+      inquirer.prompt(deletePrompts).then((answer) => {
+        switch (answer.deleteP) {
+          case "A Department":
+            break;
+          case "An Employee":
+            break;
+          case "A Role":
+            break;
+          case "<= Go Back":
+            inquirer.prompt(topMenuPrompts).then((answer) => {
+              routeApp(answer.topMenu);
+            });
+            break;
+        }
+      });
       break;
   }
 };
