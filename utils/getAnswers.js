@@ -37,6 +37,12 @@ const getAnswers = () => {
         updateEmpSal: "",
       };
 
+      // TODO: Determine which inquirer prompts are needed
+
+      // TODO: Write inquirer prompts to setAnswers.js
+
+      // TODO: Once setAnswers.js is ready, run setAnswers()
+
       const askFirst = () => {
         inquirer.prompt(updateEmpFName).then((answer) => {
           empAnswers["updateEmpFName"] = answer.updateEmpFName;
@@ -73,9 +79,12 @@ const getAnswers = () => {
         });
       };
 
+      // Log the updated object with answers
+
       for (const key in empAnswers) {
         console.log(`${key}: ${empAnswers[key]}`);
-      }
+        };
+        
       // TODO: SQL REQUEST: Update Employee
       console.log("Updated Employee");
       returnTop();
