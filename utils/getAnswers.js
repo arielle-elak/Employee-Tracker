@@ -30,7 +30,7 @@ const getAnswers = () => {
       );
       // Create array of prompts to ask from updateEmp2
         const choices = answer.updateEmp2;
-        var choicesArr = choices.split(',');
+        var choicesArr = choices.toString().split(',');
         console.log(choicesArr);
 
       // Object to store answers: Null answers will be ignored by SQL request
