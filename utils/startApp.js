@@ -34,35 +34,13 @@ const inquirer = require("inquirer");
 // 1) Start the app
 const startApp = () => {
   console.log(`Welcome to the Employee Tracker!`);
-  inquirer.prompt(topMenuPrompts).then((answer) => {
-    routeApp(answer.topMenu);
-  });
-};
-
-// Return to top menu
-const returnTop = () => {
-  inquirer.prompt(
-    {
-      type: "list",
-      name: "returntoTop",
-      message: "Would you like to perform another action?",
-      choices: ["Yes", "No"]
-    }
-  ).then((answer) => {
-    switch (answer.returntoTop) {
-      case "Yes":
-        routeApp();
-        break;
-      case "No":
-        console.log("Thanks for using!\nYou will find a log of changes made in the 'session_log' file.\nYou may now type CTRL + C to end this session.\nTo start again, type 'node server'.")
-        break;
-    }
-  });
+  routeApp();
 };
 
 // Choose how to route the inquirer
-const routeApp = (route) => {
-  switch (route) {
+const routeApp = () => {
+  inquirer.prompt(topMenuPrompts).then((answer) => {
+  switch (answer.topMenu) {
     // 2) VIEW MENU
     case "View":
       inquirer.prompt(viewPrompts).then((answer) => {
@@ -331,7 +309,27 @@ const routeApp = (route) => {
       });
 
       break;
-  }
+    }
+  });
 };
+
+// Return to top menu
+const returnTop = () => {
+  inquirer.prompt(
+    {
+      type: "list",
+      name: "returntoTop",
+      message: "Would you like to perform another action?",
+      choices: ["Yes", "No"]
+    }
+  ).then((answer) => {
+    if (answer.returntoTop = "Yes") {
+      routeApp();
+    } else {
+      console.log("Thanks for using!\nYou will find a log of changes made in the 'session_log' file.\nYou may now type CTRL + C to end this session.\nTo start again, type 'node server'.")
+    }
+  });
+};
+
 
 module.exports = startApp;
