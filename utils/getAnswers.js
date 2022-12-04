@@ -16,25 +16,25 @@ const {
 } = require("./prompts");
 
 const getAnswers = () => {
-  inquirer.prompt(updateEmpPrompts).then((answer) => {
-    console.log(
-      "Employee to Update: " +
-        answer.updateEmp1 +
-        "\n" +
-        "To Update: " +
-        answer.updateEmp2
-    );
-    // Create array of prompts to ask from updateEmp2
+    inquirer.prompt(updateEmpPrompts).then((answer) => {
+      console.log(
+        "Employee to Update: " +
+          answer.updateEmp1 +
+          "\n" +
+          "To Update: " +
+          answer.updateEmp2
+      );
+      // Create array of prompts to ask from updateEmp2
       const choices = answer.updateEmp2;
 
       // Object to store answers: Null answers will be ignored by SQL request
       var empAnswers = {
-        updateEmpFName: null,
-        updateEmpLName: null,
-        updateEmpDep: null,
-        updateEmpRole: null,
-        updateEmpMan: null,
-        updateEmpSal: null,
+        updateEmpFName: "",
+        updateEmpLName: "",
+        updateEmpDep: "",
+        updateEmpRole: "",
+        updateEmpMan: "",
+        updateEmpSal: "",
       };
 
       const askFirst = () => {
@@ -73,12 +73,14 @@ const getAnswers = () => {
         });
       };
 
-      console.log("Updated Answers: " + empAnswers);
-
-    // TODO: SQL REQUEST: Update Employee
+      for (const key in empAnswers) {
+        console.log(`${key}: ${empAnswers[key]}`);
+      }
+      // TODO: SQL REQUEST: Update Employee
       console.log("Updated Employee");
       returnTop();
-  });
+    });
+
 };
 
 module.exports = getAnswers;
