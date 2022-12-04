@@ -1,5 +1,6 @@
 // MENU OPTIONS FOR LOGIC FLOW
 
+
 // 1) TOP Menu Prompts
 const topMenuPrompts = [
   {
@@ -371,5 +372,5 @@ module.exports = {
   deletePrompts,
   deleteDepPrompts,
   deleteEmpPrompts,
-  deleteRolePrompts,
+  deleteRolePrompts
 };
