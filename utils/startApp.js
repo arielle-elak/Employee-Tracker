@@ -22,7 +22,7 @@ const {
 } = require("./prompts");
 
 // Import utility for gettinganswers for Employee update
-const getAnswers = require("./getAnswers");
+const { getAnswers } = require("./getAnswers");
 
 const { returnTop } = require("./returnTop");
 
