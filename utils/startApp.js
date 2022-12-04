@@ -90,14 +90,17 @@ const routeApp = (route) => {
         switch (answer.addP) {
           case "A Department":
              // 3a) ADD Department
+             console.log("Add a Department");
             inquirer.prompt(addDepPrompts).then((answer) => {});
             break;
           case "An Employee":
             // 3b) ADD Employee
+            console.log("Add an Employee");
             inquirer.prompt(addEmpPrompts).then((answer) => {});
             break;
           case "A Role":
             // 3c) ADD Role
+            console.log("Add a Role");
             inquirer.prompt(addRolePrompts).then((answer) => {});
             break;
           case "<= Go Back":
@@ -113,10 +116,16 @@ const routeApp = (route) => {
       inquirer.prompt(updatePrompts).then((answer) => {
         switch (answer.updateP) {
           case "A Department":
+            // 4a) UDPATE Department
+            console.log("Update a Department");
             break;
           case "An Employee":
+            // 4b) UDPATE Employee
+            console.log("Update an Employee");
             break;
           case "A Role":
+            // 4c) UPDATE Role
+            console.log("Update a Role");
             break;
           case "<= Go Back":
             inquirer.prompt(topMenuPrompts).then((answer) => {
@@ -131,10 +140,16 @@ const routeApp = (route) => {
       inquirer.prompt(deletePrompts).then((answer) => {
         switch (answer.deleteP) {
           case "A Department":
+            // 5a) DELETE Department
+            console.log("Delete a Department");
             break;
           case "An Employee":
+            // 5b) DELETE Employee
+            console.log("Delete an Employee");
             break;
           case "A Role":
+            // 5c) DELETE Role
+            console.log("Delete a Role");
             break;
           case "<= Go Back":
             inquirer.prompt(topMenuPrompts).then((answer) => {
