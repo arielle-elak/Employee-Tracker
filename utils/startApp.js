@@ -262,7 +262,7 @@ const routeApp = () => {
                 };
               });
             };
-            areYouSure();
+            areYouSureDep();
             break;
           case "An Employee":
             // 5b) DELETE Employee
@@ -283,6 +283,7 @@ const routeApp = () => {
                 };
               });
             };
+            areYouSureEmp();
             break;
           case "A Role":
             // 5c) DELETE Role
