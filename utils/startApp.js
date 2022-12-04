@@ -193,11 +193,17 @@ const routeApp = (route) => {
 
               console.log("Functions to Run: " + prompts);
             });
-            // TODO: SQL REQUEST: Update Employee
+            // TODO: SQL REQUEST: Update Employee by Cycling Through const prompts array.
             break;
           case "A Role":
             // 4c) UPDATE Role
             console.log("Update a Role");
+            inquirer.prompt(updateRolePrompts).then((answer) => {
+              console.log(
+                "Current Role: " + answer.updateRole1 + "\n" +
+                "New Role : " + answer.updateRole2)
+              // TODO: SQL REQUEST: Update Role
+            })
             break;
           case "<= Go Back":
             inquirer.prompt(topMenuPrompts).then((answer) => {
@@ -214,6 +220,21 @@ const routeApp = (route) => {
           case "A Department":
             // 5a) DELETE Department
             console.log("Delete a Department");
+            const areYouSure = () => {
+              inquirer.prompt(deleteDepPrompts).then((answer) => {
+                console.log("Department to Delete: " + answer.deleteDep1)
+                console.log("Are You Sure?: " + answer.deleteDep2)
+                switch (answer.deleteDep2) {
+                  case "No":
+                    areYouSure();
+                    break;
+                  case "Yes":
+                    // TODO: SQL REQUEST: Delete Department
+                    break;
+                };
+              });
+            };
+            areYouSure();
             break;
           case "An Employee":
             // 5b) DELETE Employee
