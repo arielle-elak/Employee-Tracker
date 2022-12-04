@@ -220,13 +220,13 @@ const routeApp = (route) => {
           case "A Department":
             // 5a) DELETE Department
             console.log("Delete a Department");
-            const areYouSure = () => {
+            const areYouSureDep = () => {
               inquirer.prompt(deleteDepPrompts).then((answer) => {
                 console.log("Department to Delete: " + answer.deleteDep1)
                 console.log("Are You Sure?: " + answer.deleteDep2)
                 switch (answer.deleteDep2) {
                   case "No":
-                    areYouSure();
+                    areYouSureDep();
                     break;
                   case "Yes":
                     // TODO: SQL REQUEST: Delete Department
@@ -239,10 +239,38 @@ const routeApp = (route) => {
           case "An Employee":
             // 5b) DELETE Employee
             console.log("Delete an Employee");
+            const areYouSureEmp = () => {
+              inquirer.prompt(deleteEmpPrompts).then((answer) => {
+                console.log("Employee to Delete: " + answer.deleteEmp1)
+                console.log("Are You Sure?: " + answer.deleteEmp2)
+                switch (answer.deleteEmp2) {
+                  case "No":
+                    areYouSureEmp();
+                    break;
+                  case "Yes":
+                    // TODO: SQL REQUEST: Delete Employee
+                    break;
+                };
+              });
+            };
             break;
           case "A Role":
             // 5c) DELETE Role
             console.log("Delete a Role");
+            const areYouSureRole = () => {
+              inquirer.prompt(deleteRolePrompts).then((answer) => {
+                console.log("Role to Delete: " + answer.deleteRole1)
+                console.log("Are You Sure?: " + answer.deleteRole2)
+                switch (answer.deleteRole2) {
+                  case "No":
+                    areYouSureRole();
+                    break;
+                  case "Yes":
+                    // TODO: SQL REQUEST: Delete Role
+                    break;
+                };
+              });
+            };
             break;
           case "<= Go Back":
             inquirer.prompt(topMenuPrompts).then((answer) => {
