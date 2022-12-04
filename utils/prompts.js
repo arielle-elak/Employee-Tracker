@@ -241,7 +241,7 @@ const updateEmpRole = [
 const updateEmpMan = [
   {
     type: "autocomplete",
-    name: "updateEmpRole",
+    name: "updateEmpMan",
     message: `Please select or start typing the new Manager.`,
     // TODO Sync Choices with sql database table
     choices: ["SQL CHOICES"],

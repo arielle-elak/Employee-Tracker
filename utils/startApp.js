@@ -192,30 +192,38 @@ const routeApp = () => {
               if (choices.includes("First Name")) {
                 prompts.push("updateEmpFName");
               };
-
               if (choices.includes("Last Name")) {
                 prompts.push("updateEmpLName");
               };
-
               if (choices.includes("Role")) {
                 prompts.push("updateEmpRole");
               };
-
               if (choices.includes("Department")) {
                 prompts.push("updateEmpDep");
               };
-
               if (choices.includes("Manager")) {
                 prompts.push("updateEmpMan");
               };
-
               if (choices.includes("Salary")) {
                 prompts.push("updateEmpSal");
               };
 
-            console.log("Functions to Run: " + prompts);
-            console.log("Updated Employee")
-            // TODO: SQL REQUEST: Update Employee by Cycling Through const prompts array.
+              console.log("Functions to Run: " + prompts);
+
+              // Object to store answers: Null answers will be ignored by SQL request
+              const empAnswers = {
+                "updateEmpFName": null,
+                "updateEmpLName": null,
+                "updateEmpDep": null,
+                "updateEmpRole": null,
+                "updateEmpMan": null,
+                "updateEmpSal": null
+             }
+              // TODO: Cycle Through prompts array.
+
+
+              // TODO: SQL REQUEST: Update Employee
+              console.log("Updated Employee");
             returnTop();
             });
             break;
