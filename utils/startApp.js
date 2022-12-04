@@ -304,6 +304,7 @@ const routeApp = () => {
                 };
               });
             };
+            areYouSureRole();
             break;
           case "<= Go Back":
             inquirer.prompt(topMenuPrompts).then((answer) => {
