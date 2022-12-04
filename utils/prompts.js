@@ -92,15 +92,11 @@ const addEmpPrompts = [
     },
   },
   {
-    type: "input",
+    type: "autocomplete",
     name: "addEmp3",
-    message: `Role:`,
-    validate: async (input) => {
-      if (!input) {
-        return "Role cannot be blank.";
-      }
-      return true;
-    },
+    message: `Please select or start typing the role you wish to assign. If the role does not yet exist, please add it first.`,
+    // TODO Sync Choices with sql database table
+    choices: ["SQL CHOICES"],
   },
   {
     type: "list",
@@ -110,9 +106,9 @@ const addEmpPrompts = [
     choices: ["SQL CHOICES"],
   },
   {
-    type: "list",
+    type: "autocomplete",
     name: "addEmp5",
-    message: `Department:`,
+    message: `Please select or start typing the department you wish to assign. If the department does not yet exist, please add it first.`,
     // TODO Sync Choices with sql database table
     choices: ["SQL CHOICES"],
   },

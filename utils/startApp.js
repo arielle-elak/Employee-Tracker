@@ -42,15 +42,15 @@ const startApp = () => {
 // Choose how to route the inquirer
 const routeApp = (route) => {
   switch (route) {
-    // 2) VIEW
+    // 2) VIEW MENU
     case "View":
       inquirer.prompt(viewPrompts).then((answer) => {
         switch (answer.viewP) {
           case "Departments":
             console.log("View All Departments");
             break;
-          // 2a) View Employees
           case "Employees":
+             // 2a) VIEW Employees
             inquirer.prompt(viewEmployees).then((answer) => {
               switch (answer.viewEmp) {
                 case "By Department":
@@ -84,17 +84,20 @@ const routeApp = (route) => {
         }
       });
       break;
-    // 3) ADD
+    // 3) ADD MENU
     case "Add":
       inquirer.prompt(addPrompts).then((answer) => {
         switch (answer.addP) {
           case "A Department":
+             // 3a) ADD Department
             inquirer.prompt(addDepPrompts).then((answer) => {});
             break;
           case "An Employee":
+            // 3b) ADD Employee
             inquirer.prompt(addEmpPrompts).then((answer) => {});
             break;
           case "A Role":
+            // 3c) ADD Role
             inquirer.prompt(addRolePrompts).then((answer) => {});
             break;
           case "<= Go Back":
