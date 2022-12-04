@@ -18,18 +18,6 @@ const {
   updateEmpMan,
   updateEmpSal,
 } = require("./prompts");
-const e = require("express");
-
-
-const askEmp = (choicesArr) => {
-    console.log(choicesArr);
-
-    // Determine which inquirer prompts are needed and write to
-    
-
-
-    seeObject();
-};
 
 const seeObject = () => {
     // Object to store answers: Null answers will be ignored by SQL request
@@ -52,7 +40,9 @@ const getAnswers = () => {
         // Create array of prompts to ask from updateEmp2
     const choices = answers.updateEmp2;
         const choicesArr = choices.toString().split(",");
-        askEmp(choicesArr);
+        choicesArr.forEach(element =>
+            console.log(element)
+        );
     });
 
 };
