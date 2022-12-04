@@ -25,14 +25,6 @@ const getAnswers = () => {
       const choices = answer.updateEmp2;
       const choicesArr = choices.toString().split(",");
 
-      console.log(
-        "Employee to Update: " +
-          answer.updateEmp1 +
-          "\n" +
-          "To Update: " +
-          choicesArr
-      );
-
       // Object to store answers: Null answers will be ignored by SQL request
       var empAnswers = {
         updateEmpFName: "",
@@ -43,9 +35,24 @@ const getAnswers = () => {
         updateEmpSal: "",
       };
 
-      // TODO: Determine which inquirer prompts are needed
+      // console.log(choicesArr);
 
+      // Determine which inquirer prompts are needed
       for (const choice in choicesArr) {
+        switch (choice) {
+          case "First Name":
+            break;
+          case "Last Name":
+            break;
+          case "Role":
+            break;
+          case "Department":
+            break;
+          case "Manager":
+            break;
+          case "Salary":
+            break;
+        }
       }
 
       // TODO: Write inquirer prompts to setAnswers.js
