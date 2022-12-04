@@ -31,12 +31,12 @@ const viewEmployees = [
   {
     type: "list",
     name: "viewEmp",
-    message: `By:`,
+    message: `How would your like to view employees?`,
     choices: [
-      "Department",
-      "Manager",
-      "Role",
-      "Salary",
+      "By Department",
+      "By Manager",
+      "By Role",
+      "By Salary",
       "<= Go Back"
     ],
   },

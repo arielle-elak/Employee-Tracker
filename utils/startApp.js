@@ -59,21 +59,25 @@ const routeApp = () => {
                   console.log("SQL REQUEST: View All Employees By Department");
                   // TODO: SQL REQUEST: View All Employees By Department
                   console.log("Viewing All Employees by Department")
+                  returnTop();
                   break;
                 case "By Manager":
                   console.log("SQL REQUEST: View All Employees By Manager");
                   // TODO: SQL REQUEST: View All Employees By Manager
                   console.log("Viewing All Employees by Manager")
+                  returnTop();
                   break;
                 case "By Role":
                   console.log("SQL REQUEST: View All Employees By Role");
                   // TODO: SQL REQUEST: View All Employees By Role
                   console.log("Viewing All Employees by Role")
+                  returnTop();
                   break;
                 case "By Salary":
                   console.log("SQL REQUEST: View All Employees By Salary");
                   // TODO: SQL REQUEST: View All Employees By Salary
                   console.log("Viewing All Employees by Salary")
+                  returnTop();
                   break;
                 case "<= Go Back":
                   inquirer.prompt(topMenuPrompts).then((answer) => {
@@ -87,7 +91,7 @@ const routeApp = () => {
             console.log("SQL REQUEST: View All Roles");
             // TODO: SQL REQUEST: View All Roles
             console.log("Viewing All Roles")
-
+            returnTop();
             break;
           case "<= Go Back":
             inquirer.prompt(topMenuPrompts).then((answer) => {
@@ -108,7 +112,7 @@ const routeApp = () => {
               console.log(answer.addDep1);
               // TODO: SQL REQUEST: Add Department
               console.log("Added Department")
-
+              returnTop();
             });
 
             break;
@@ -125,7 +129,7 @@ const routeApp = () => {
               );
               // TODO: SQL REQUEST: Add Employee
               console.log("Added Employee")
-
+              returnTop();
             });
             break;
           case "A Role":
@@ -135,7 +139,7 @@ const routeApp = () => {
               console.log(answer.addRole1);
               // TODO: SQL REQUEST: Add Role
               console.log("Added Role")
-
+              returnTop();
             });
 
             break;
@@ -165,7 +169,7 @@ const routeApp = () => {
               );
               // TODO: SQL REQUEST: Update Department
               console.log("Updated Department")
-
+              returnTop();
             });
 
             break;
@@ -209,11 +213,11 @@ const routeApp = () => {
                 prompts.push("updateEmpSal");
               };
 
-              console.log("Functions to Run: " + prompts);
-            });
-            // TODO: SQL REQUEST: Update Employee by Cycling Through const prompts array.
+            console.log("Functions to Run: " + prompts);
             console.log("Updated Employee")
-
+            // TODO: SQL REQUEST: Update Employee by Cycling Through const prompts array.
+            returnTop();
+            });
             break;
           case "A Role":
             // 4c) UPDATE Role
@@ -224,7 +228,7 @@ const routeApp = () => {
                 "New Role : " + answer.updateRole2)
               // TODO: SQL REQUEST: Update Role
               console.log("Updated Role")
-
+              returnTop();
             })
             break;
           case "<= Go Back":
@@ -253,7 +257,7 @@ const routeApp = () => {
                   case "Yes":
                     // TODO: SQL REQUEST: Delete Department
                     console.log("Deleted Department")
-
+                    returnTop();
                     break;
                 };
               });
@@ -274,7 +278,7 @@ const routeApp = () => {
                   case "Yes":
                     console.log("Deleted Employee")
                     // TODO: SQL REQUEST: Delete Employee
-
+                    returnTop();
                     break;
                 };
               });
@@ -294,7 +298,7 @@ const routeApp = () => {
                   case "Yes":
                     console.log("Deleted Role")
                     // TODO: SQL REQUEST: Delete Role
-
+                    returnTop();
                     break;
                 };
               });
@@ -313,7 +317,7 @@ const routeApp = () => {
   });
 };
 
-// Return to top menu
+// Return to top menu or end the app
 const returnTop = () => {
   inquirer.prompt(
     {
