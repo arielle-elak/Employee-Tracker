@@ -1,6 +1,9 @@
 // Import inquirer
 const inquirer = require("inquirer");
 
+// Import returnTop
+const { returnTop } = require("./returnTop");
+
 // Import employee update prompts
 const {
   updateEmpPrompts,
@@ -22,49 +25,59 @@ const getAnswers = () => {
         answer.updateEmp2
     );
     // Create array of prompts to ask from updateEmp2
-    const choices = answer.updateEmp2;
-    const prompts = [];
+      const choices = answer.updateEmp2;
 
-    if (choices.includes("First Name")) {
-      prompts.push("updateEmpFName");
-    }
-    if (choices.includes("Last Name")) {
-      prompts.push("updateEmpLName");
-    }
-    if (choices.includes("Role")) {
-      prompts.push("updateEmpRole");
-    }
-    if (choices.includes("Department")) {
-      prompts.push("updateEmpDep");
-    }
-    if (choices.includes("Manager")) {
-      prompts.push("updateEmpMan");
-    }
-    if (choices.includes("Salary")) {
-      prompts.push("updateEmpSal");
-    }
+      // Object to store answers: Null answers will be ignored by SQL request
+      var empAnswers = {
+        updateEmpFName: null,
+        updateEmpLName: null,
+        updateEmpDep: null,
+        updateEmpRole: null,
+        updateEmpMan: null,
+        updateEmpSal: null,
+      };
 
-    console.log("Functions to Run: " + prompts);
+      const askFirst = () => {
+        inquirer.prompt(updateEmpFName).then((answer) => {
+          empAnswers["updateEmpFName"] = answer.updateEmpFName;
+        });
+      };
 
-    // TODO: Cycle Through prompts array to fill empAnswers
-    for (const prompt of prompts) {
-      inquirer.prompt(prompt).then((answer) => {
-        console.log(answer.prompt);
-      });
-    }
-    // Object to store answers: Null answers will be ignored by SQL request
-    const empAnswers = {
-      updateEmpFName: null,
-      updateEmpLName: null,
-      updateEmpDep: null,
-      updateEmpRole: null,
-      updateEmpMan: null,
-      updateEmpSal: null,
-    };
+      const askLast = () => {
+        inquirer.prompt(updateEmpLName).then((answer) => {
+          empAnswers["updateEmpLName"] = answer.updateEmpLName;
+        });
+      };
+
+      const askRole = () => {
+        inquirer.prompt(updateEmpRole).then((answer) => {
+          empAnswers["updateEmpRole"] = answer.updateEmpRole;
+        });
+      };
+
+      const askDep = () => {
+        inquirer.prompt(updateEmpDep).then((answer) => {
+          empAnswers["updateEmpDep"] = answer.updateEmpDep;
+        });
+      };
+
+      const askMan = () => {
+        inquirer.prompt(updateEmpMan).then((answer) => {
+          empAnswers["updateEmpMan"] = answer.updateEmpMan;
+        });
+      };
+
+      const askSal = () => {
+        inquirer.prompt(updateEmpSal).then((answer) => {
+          empAnswers["updateEmpSal"] = answer.updateEmpSal;
+        });
+      };
+
+      console.log("Updated Answers: " + empAnswers);
 
     // TODO: SQL REQUEST: Update Employee
-    console.log("Updated Employee");
-    returnTop();
+      console.log("Updated Employee");
+      returnTop();
   });
 };
 
