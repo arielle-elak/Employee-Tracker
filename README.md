@@ -1,4 +1,4 @@
 # Employee-Tracker
 
-This application uses secure-env.
-https://www.npmjs.com/package/secure-env
+Miro Diagram of Flow:
+https://miro.com/app/board/uXjVP9XBKFI=/?share_link_id=57141098749

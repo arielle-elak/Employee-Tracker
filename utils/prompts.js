@@ -63,14 +63,7 @@ const addDepPrompts = [
       }
       return true;
     },
-  },
-  {
-    type: "checkbox",
-    name: "addDep2",
-    message: `Please select all roles contained within this department:`,
-    // TODO Sync Choices with sql database table
-    choices: ["SQL CHOICES"],
-  },
+  }
 ];
 
 // 3b) ADD EMPLOYEE Menu Prompts
@@ -136,14 +129,7 @@ const addRolePrompts = [
       }
       return true;
     },
-  },
-  {
-    type: "checkbox",
-    name: "addRole2",
-    message: `Please select all departments that utilize this role:`,
-    // TODO Sync Choices with sql database table
-    choices: ["SQL CHOICES"],
-  },
+  }
 ];
 
 // 4) UPDATE Menu Prompts
@@ -189,7 +175,7 @@ const updateEmpPrompts = [
   },
   {
     type: "checkbox",
-    name: "addEmp2",
+    name: "updateEmp2",
     message: `What attribute(s) would you like to update?`,
     choices: [
       "First Name",
@@ -274,6 +260,28 @@ const updateEmpSal = [
     validate: async (input) => {
       if (!input || Math.sign(num) === -1) {
         return "Salary cannot be blank or negative.";
+      }
+      return true;
+    },
+  },
+];
+
+// 4c) UPDATE Role Prompts
+const updateRolePrompts = [
+  {
+    type: "list",
+    name: "updateRole1",
+    message: `Please select the Role you wish to update:`,
+    // TODO Sync Choices with sql database table
+    choices: ["SQL CHOICES"],
+  },
+  {
+    type: "input",
+    name: "updateRole2",
+    message: `What is the new name of this Role?`,
+    validate: async (input) => {
+      if (!input) {
+        return "New role cannot be blank.";
       }
       return true;
     },
