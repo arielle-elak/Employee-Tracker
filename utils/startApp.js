@@ -13,13 +13,6 @@ const {
   // Update Prompts
   updatePrompts,
   updateDepPrompts,
-  updateEmpPrompts,
-  updateEmpFName,
-  updateEmpLName,
-  updateEmpDep,
-  updateEmpRole,
-  updateEmpMan,
-  updateEmpSal,
   updateRolePrompts,
   // Delete Prompts
   deletePrompts,
@@ -27,6 +20,10 @@ const {
   deleteEmpPrompts,
   deleteRolePrompts,
 } = require("./prompts");
+
+// Import utility for gettinganswers for Employee update
+const getAnswers = require("./getAnswers");
+
 
 // Import inquirer
 const inquirer = require("inquirer");
@@ -176,56 +173,8 @@ const routeApp = () => {
           case "An Employee":
             // 4b) UDPATE Employee
             console.log("Update an Employee");
-            inquirer.prompt(updateEmpPrompts).then((answer) => {
-              console.log(
-                "Employee to Update: " +
-                  answer.updateEmp1 +
-                  "\n" +
-                  "To Update: " +
-                  answer.updateEmp2
-              );
-
-              // Create array of prompts to ask from updateEmp2
-              const choices = answer.updateEmp2;
-              const prompts = [];
-
-              if (choices.includes("First Name")) {
-                prompts.push("updateEmpFName");
-              };
-              if (choices.includes("Last Name")) {
-                prompts.push("updateEmpLName");
-              };
-              if (choices.includes("Role")) {
-                prompts.push("updateEmpRole");
-              };
-              if (choices.includes("Department")) {
-                prompts.push("updateEmpDep");
-              };
-              if (choices.includes("Manager")) {
-                prompts.push("updateEmpMan");
-              };
-              if (choices.includes("Salary")) {
-                prompts.push("updateEmpSal");
-              };
-
-              console.log("Functions to Run: " + prompts);
-
-              // Object to store answers: Null answers will be ignored by SQL request
-              const empAnswers = {
-                "updateEmpFName": null,
-                "updateEmpLName": null,
-                "updateEmpDep": null,
-                "updateEmpRole": null,
-                "updateEmpMan": null,
-                "updateEmpSal": null
-             }
-              // TODO: Cycle Through prompts array.
-
-
-              // TODO: SQL REQUEST: Update Employee
-              console.log("Updated Employee");
-            returnTop();
-            });
+            // Function to get answers from employee prompts
+            getAnswers();
             break;
           case "A Role":
             // 4c) UPDATE Role
