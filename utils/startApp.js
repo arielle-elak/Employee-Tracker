@@ -48,22 +48,27 @@ const routeApp = (route) => {
         switch (answer.viewP) {
           case "Departments":
             console.log("SQL REQUEST: View All Departments");
+            // TODO: SQL REQUEST: View All Departments
             break;
           case "Employees":
-             // 2a) VIEW Employees
+            // 2a) VIEW Employees
             inquirer.prompt(viewEmployees).then((answer) => {
               switch (answer.viewEmp) {
                 case "By Department":
                   console.log("SQL REQUEST: View All Employees By Department");
+                  // TODO: SQL REQUEST: View All Employees By Department
                   break;
                 case "By Manager":
                   console.log("SQL REQUEST: View All Employees By Manager");
+                  // TODO: SQL REQUEST: View All Employees By Manager
                   break;
                 case "By Role":
                   console.log("SQL REQUEST: View All Employees By Role");
+                  // TODO: SQL REQUEST: View All Employees By Role
                   break;
                 case "By Salary":
                   console.log("SQL REQUEST: View All Employees By Salary");
+                  // TODO: SQL REQUEST: View All Employees By Salary
                   break;
                 case "<= Go Back":
                   inquirer.prompt(topMenuPrompts).then((answer) => {
@@ -75,6 +80,7 @@ const routeApp = (route) => {
             break;
           case "Roles":
             console.log("SQL REQUEST: View All Roles");
+            // TODO: SQL REQUEST: View All Roles
             break;
           case "<= Go Back":
             inquirer.prompt(topMenuPrompts).then((answer) => {
@@ -91,17 +97,32 @@ const routeApp = (route) => {
           case "A Department":
              // 3a) ADD Department
              console.log("Add a Department");
-            inquirer.prompt(addDepPrompts).then((answer) => {});
+            inquirer.prompt(addDepPrompts).then((answer) => {
+              console.log(answer.addDep1);
+              // TODO: SQL REQUEST: Add Department
+            });
             break;
           case "An Employee":
             // 3b) ADD Employee
             console.log("Add an Employee");
-            inquirer.prompt(addEmpPrompts).then((answer) => {});
+            inquirer.prompt(addEmpPrompts).then((answer) => {
+              console.log(
+                "First Name: " + answer.addEmp1 + "\n" +
+                "Last Name: " + answer.addEmp2 + "\n" +
+                "Role: " + answer.addEmp3 + "\n" +
+                "Manager " + answer.addEmp4 + "\n" +
+                "Department" + answer.addEmp5 + "\n"
+              );
+              // TODO: SQL REQUEST: Add Employee
+            });
             break;
           case "A Role":
             // 3c) ADD Role
             console.log("Add a Role");
-            inquirer.prompt(addRolePrompts).then((answer) => {});
+            inquirer.prompt(addRolePrompts).then((answer) => {
+              console.log(answer.addRole1);
+              // TODO: SQL REQUEST: Add Role
+            });
             break;
           case "<= Go Back":
             inquirer.prompt(topMenuPrompts).then((answer) => {
