@@ -1,6 +1,8 @@
 const inquirer = require("inquirer");
 
-const { routeApp } = require("./startApp");
+const { routeApp } = require("./routeApp");
+
+
 
 // Return to top menu or end the app
 const returnTop = () => {
