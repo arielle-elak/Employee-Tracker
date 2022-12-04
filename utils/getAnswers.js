@@ -21,17 +21,17 @@ const {
 
 const getAnswers = () => {
     inquirer.prompt(updateEmpPrompts).then((answer) => {
+      // Create array of prompts to ask from updateEmp2
+      const choices = answer.updateEmp2;
+      var choicesArr = choices.toString().split(",");
+
       console.log(
         "Employee to Update: " +
           answer.updateEmp1 +
           "\n" +
           "To Update: " +
-          answer.updateEmp2
+          choicesArr
       );
-      // Create array of prompts to ask from updateEmp2
-        const choices = answer.updateEmp2;
-        var choicesArr = choices.toString().split(',');
-        console.log(choicesArr);
 
       // Object to store answers: Null answers will be ignored by SQL request
       var empAnswers = {
@@ -45,12 +45,8 @@ const getAnswers = () => {
 
       // TODO: Determine which inquirer prompts are needed
 
-        for (const choice in choicesArr) {
-
-        }
-
-
-
+      for (const choice in choicesArr) {
+      }
 
       // TODO: Write inquirer prompts to setAnswers.js
 
@@ -96,7 +92,7 @@ const getAnswers = () => {
 
       for (const key in empAnswers) {
         console.log(`${key}: ${empAnswers[key]}`);
-        };
+      }
 
       // TODO: SQL REQUEST: Update Employee
       console.log("Updated Employee");
