@@ -323,10 +323,15 @@ const returnTop = () => {
       choices: ["Yes", "No"]
     }
   ).then((answer) => {
-    if (answer.returntoTop = "Yes") {
-      routeApp();
-    } else {
-      console.log("Thanks for using!\nYou will find a log of changes made in the 'session_log' file.\nYou may now type CTRL + C to end this session.\nTo start again, type 'node server'.")
+    switch (answer.returntoTop) {
+      case "Yes":
+        routeApp();
+        break;
+      case "No":
+        console.log(
+          "Thanks for using!\nYou will find a log of changes made in the 'session_log' file.\nYou may now type CTRL + C to end this session.\nTo start again, type 'node server'."
+        );
+        break;
     }
   });
 };
