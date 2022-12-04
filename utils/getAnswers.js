@@ -19,32 +19,25 @@ const {
   updateEmpSal,
 } = require("./prompts");
 
-const seeObject = () => {
-    // Object to store answers: Null answers will be ignored by SQL request
+const getAnswers = () => {
+  inquirer.prompt(updateEmpPrompts).then((answers) => {
+    // Create array of prompts to ask from updateEmp2
+    const choices = answers.updateEmp2;
+    const choicesArr = choices.toString().split(",");
+    choicesArr.forEach((element) => console.log(element));
     var empAnswers = {
-        updateEmpFName: "",
-        updateEmpLName: "",
-        updateEmpDep: "",
-        updateEmpRole: "",
-        updateEmpMan: "",
-        updateEmpSal: "",
+      updateEmpFName: "",
+      updateEmpLName: "",
+      updateEmpDep: "",
+      updateEmpRole: "",
+      updateEmpMan: "",
+      updateEmpSal: "",
     };
 
     for (const key in empAnswers) {
-        console.log(`${key}: ${empAnswers[key]}`);
+      console.log(`${key}: ${empAnswers[key]}`);
     }
-};
-
-const getAnswers = () => {
-    inquirer.prompt(updateEmpPrompts).then((answers) => {
-        // Create array of prompts to ask from updateEmp2
-    const choices = answers.updateEmp2;
-        const choicesArr = choices.toString().split(",");
-        choicesArr.forEach(element =>
-            console.log(element)
-        );
-    });
-
+  });
 };
 
 
