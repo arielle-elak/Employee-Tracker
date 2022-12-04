@@ -47,23 +47,23 @@ const routeApp = (route) => {
       inquirer.prompt(viewPrompts).then((answer) => {
         switch (answer.viewP) {
           case "Departments":
-            console.log("View All Departments");
+            console.log("SQL REQUEST: View All Departments");
             break;
           case "Employees":
              // 2a) VIEW Employees
             inquirer.prompt(viewEmployees).then((answer) => {
               switch (answer.viewEmp) {
                 case "By Department":
-                  console.log("View All Employees By Department");
+                  console.log("SQL REQUEST: View All Employees By Department");
                   break;
                 case "By Manager":
-                  console.log("View All Employees By Manager");
+                  console.log("SQL REQUEST: View All Employees By Manager");
                   break;
                 case "By Role":
-                  console.log("View All Employees By Role");
+                  console.log("SQL REQUEST: View All Employees By Role");
                   break;
                 case "By Salary":
-                  console.log("View All Employees By Salary");
+                  console.log("SQL REQUEST: View All Employees By Salary");
                   break;
                 case "<= Go Back":
                   inquirer.prompt(topMenuPrompts).then((answer) => {
@@ -74,7 +74,7 @@ const routeApp = (route) => {
             });
             break;
           case "Roles":
-            console.log("View All Roles");
+            console.log("SQL REQUEST: View All Roles");
             break;
           case "<= Go Back":
             inquirer.prompt(topMenuPrompts).then((answer) => {
