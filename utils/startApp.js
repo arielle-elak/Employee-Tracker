@@ -139,10 +139,61 @@ const routeApp = (route) => {
           case "A Department":
             // 4a) UDPATE Department
             console.log("Update a Department");
+            inquirer.prompt(updateDepPrompts).then((answer) => {
+              console.log(
+                "Current Department: " +
+                  answer.updateDep1 +
+                  "\n" +
+                  "New Department: " +
+                  answer.updateDep2 +
+                  "\n"
+              );
+              // TODO: SQL REQUEST: Update Department
+            });
             break;
           case "An Employee":
             // 4b) UDPATE Employee
             console.log("Update an Employee");
+            inquirer.prompt(updateEmpPrompts).then((answer) => {
+              console.log(
+                "Employee to Update: " +
+                  answer.updateEmp1 +
+                  "\n" +
+                  "To Update: " +
+                  answer.updateEmp2
+              );
+
+              // Create array of prompts to ask from updateEmp2
+              const choices = answer.updateEmp2;
+              const prompts = [];
+
+              if (choices.includes("First Name")) {
+                prompts.push("updateEmpFName");
+              };
+
+              if (choices.includes("Last Name")) {
+                prompts.push("updateEmpLName");
+              };
+
+              if (choices.includes("Role")) {
+                prompts.push("updateEmpRole");
+              };
+
+              if (choices.includes("Department")) {
+                prompts.push("updateEmpDep");
+              };
+
+              if (choices.includes("Manager")) {
+                prompts.push("updateEmpMan");
+              };
+
+              if (choices.includes("Salary")) {
+                prompts.push("updateEmpSal");
+              };
+
+              console.log("Functions to Run: " + prompts);
+            });
+            // TODO: SQL REQUEST: Update Employee
             break;
           case "A Role":
             // 4c) UPDATE Role
