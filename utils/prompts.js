@@ -294,19 +294,69 @@ const deletePrompts = [
     type: "list",
     name: "deleteP",
     message: `Delete:`,
-    choices: ["A Department", "An Employee", "A Role", "<= Go Back"]
-  }
+    choices: ["A Department", "An Employee", "A Role", "<= Go Back"],
+  },
+];
 
-]
+// 5a) DELETE Department Prompts
+const deleteDepPrompts = [
+  {
+    type: "list",
+    name: "deleteDep1",
+    message: `Select or start typing the name of the department to delete.`,
+    choices: ["SQL CHOICES"],
+  },
+  {
+    type: "list",
+    name: "deleteDep2",
+    message: `Are you sure you would like to delete this department? This may leave employees without a department.`,
+    choices: ["No", "Yes"],
+  },
+];
+
+// 5b) DELETE Employee Prompts
+const deleteEmpPrompts = [
+  {
+    type: "list",
+    name: "deleteEmp1",
+    message: `Select or start typing the name of the employee to delete.`,
+    choices: ["SQL CHOICES"],
+  },
+  {
+    type: "list",
+    name: "deleteEmp2",
+    message: `Are you sure you would like to delete this employee?`,
+    choices: ["No", "Yes"],
+  },
+];
+
+// 5c) DELETE Role Prompts
+const deleteRolePrompts = [
+  {
+    type: "list",
+    name: "deleteRole1",
+    message: `Select or start typing the name of the role to delete.`,
+    choices: ["SQL CHOICES"],
+  },
+  {
+    type: "list",
+    name: "deleteRole2",
+    message: `Are you sure you would like to delete this role? This may leave employees without a role.`,
+    choices: ["No", "Yes"],
+  },
+];
 
 module.exports = {
   topMenuPrompts,
+
   viewPrompts,
   viewEmployees,
+
   addPrompts,
   addDepPrompts,
   addEmpPrompts,
   addRolePrompts,
+
   updatePrompts,
   updateDepPrompts,
   updateEmpPrompts,
@@ -316,5 +366,10 @@ module.exports = {
   updateEmpRole,
   updateEmpMan,
   updateEmpSal,
-  deletePrompts
+  updateRolePrompts,
+
+  deletePrompts,
+  deleteDepPrompts,
+  deleteEmpPrompts,
+  deleteRolePrompts,
 };
