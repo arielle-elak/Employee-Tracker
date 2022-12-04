@@ -5,26 +5,23 @@ const inquirer = require("inquirer");
 const { returnTop } = require("./returnTop");
 
 
-// Import the final setAnswers.js file to be written
-const { setAnswers } = require("./setAnswers");
-
 // Import employee update prompts
-const {
-  updateEmpPrompts,
-  updateEmpFName,
-  updateEmpLName,
-  updateEmpDep,
-  updateEmpRole,
-  updateEmpMan,
-  updateEmpSal,
-} = require("./prompts");
+const { updateEmpPrompts } = require("./prompts");
 
 const getAnswers = () => {
   inquirer.prompt(updateEmpPrompts).then((answers) => {
     // TODO: Select employee from db to update
-    
+    const employee = answers.updateEmp1;
+    const firstName = answers.updateEmpFName;
+    const lastName = answers.updateEmpLName;
+    const department = answers.updateEmpDep;
+    const role = answers.updateEmpRole;
+    const manager = answers.updateEmpMan;
+    const salary = answers.updateEmpSal;
 
-
+    console.log(
+      `${employee}\n${firstName}\n${lastName}\n${department}\n${role}\n${manager}\n${salary}`
+    );
 
     returnTop();
   });

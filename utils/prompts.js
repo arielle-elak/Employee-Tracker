@@ -169,29 +169,17 @@ const updateEmpPrompts = [
     message: `Please select or start typing the employee you wish to update:`,
     // TODO Sync Choices with sql database table
     choices: ["SQL CHOICES"],
-  }
-];
-
-// 4b1) UPDATE EMPLOYEE First Name
-const updateEmpFName = [
+  },
   {
     type: "input",
     name: "updateEmpFName",
     message: `What is the new First Name?`,
-  }
-];
-
-// 4b2) UPDATE EMPLOYEE Last Name
-const updateEmpLName = [
+  },
   {
     type: "input",
     name: "updateEmpLName",
     message: `What is the new Last Name?`,
-  }
-];
-
-// 4b3) UPDATE EMPLOYEE Department
-const updateEmpDep = [
+  },
   {
     type: "autocomplete",
     name: "updateEmpDep",
@@ -199,10 +187,6 @@ const updateEmpDep = [
     // TODO Sync Choices with sql database table
     choices: ["SQL CHOICES"],
   },
-];
-
-// 4b4) UPDATE EMPLOYEE Role
-const updateEmpRole = [
   {
     type: "autocomplete",
     name: "updateEmpRole",
@@ -210,10 +194,6 @@ const updateEmpRole = [
     // TODO Sync Choices with sql database table
     choices: ["SQL CHOICES"],
   },
-];
-
-// 4b5) UPDATE EMPLOYEE Manager
-const updateEmpMan = [
   {
     type: "autocomplete",
     name: "updateEmpMan",
@@ -221,21 +201,17 @@ const updateEmpMan = [
     // TODO Sync Choices with sql database table
     choices: ["SQL CHOICES"],
   },
-];
-
-// 4b6) UPDATE EMPLOYEE Salary
-const updateEmpSal = [
   {
     type: "input",
     name: "updateEmpSal",
     message: `What is the new Salary?`,
-    validate: async (input) => {
+    validate: async (num) => {
       if (Math.sign(num) === -1) {
         return "Salary cannot be negative.";
       }
       return true;
     },
-  },
+  }
 ];
 
 // 4c) UPDATE Role Prompts
@@ -332,13 +308,6 @@ module.exports = {
   updatePrompts,
   updateDepPrompts,
   updateEmpPrompts,
-  updateEmpFName,
-  updateEmpLName,
-  updateEmpDep,
-  updateEmpRole,
-  updateEmpMan,
-  updateEmpSal,
-  updateRolePrompts,
 
   deletePrompts,
   deleteDepPrompts,
