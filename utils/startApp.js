@@ -49,6 +49,8 @@ const routeApp = (route) => {
           case "Departments":
             console.log("SQL REQUEST: View All Departments");
             // TODO: SQL REQUEST: View All Departments
+            console.log("Viewing All Departments")
+            routeApp();
             break;
           case "Employees":
             // 2a) VIEW Employees
@@ -57,18 +59,26 @@ const routeApp = (route) => {
                 case "By Department":
                   console.log("SQL REQUEST: View All Employees By Department");
                   // TODO: SQL REQUEST: View All Employees By Department
+                  console.log("Viewing All Employees by Department")
+                  routeApp();
                   break;
                 case "By Manager":
                   console.log("SQL REQUEST: View All Employees By Manager");
                   // TODO: SQL REQUEST: View All Employees By Manager
+                  console.log("Viewing All Employees by Manager")
+                  routeApp();
                   break;
                 case "By Role":
                   console.log("SQL REQUEST: View All Employees By Role");
                   // TODO: SQL REQUEST: View All Employees By Role
+                  console.log("Viewing All Employees by Role")
+                  routeApp();
                   break;
                 case "By Salary":
                   console.log("SQL REQUEST: View All Employees By Salary");
                   // TODO: SQL REQUEST: View All Employees By Salary
+                  console.log("Viewing All Employees by Salary")
+                  routeApp();
                   break;
                 case "<= Go Back":
                   inquirer.prompt(topMenuPrompts).then((answer) => {
@@ -81,6 +91,8 @@ const routeApp = (route) => {
           case "Roles":
             console.log("SQL REQUEST: View All Roles");
             // TODO: SQL REQUEST: View All Roles
+            console.log("Viewing All Roles")
+            routeApp();
             break;
           case "<= Go Back":
             inquirer.prompt(topMenuPrompts).then((answer) => {
@@ -100,7 +112,10 @@ const routeApp = (route) => {
             inquirer.prompt(addDepPrompts).then((answer) => {
               console.log(answer.addDep1);
               // TODO: SQL REQUEST: Add Department
+              console.log("Added Department")
+              routeApp();
             });
+
             break;
           case "An Employee":
             // 3b) ADD Employee
@@ -114,6 +129,8 @@ const routeApp = (route) => {
                 "Department" + answer.addEmp5 + "\n"
               );
               // TODO: SQL REQUEST: Add Employee
+              console.log("Added Employee")
+              routeApp();
             });
             break;
           case "A Role":
@@ -122,7 +139,10 @@ const routeApp = (route) => {
             inquirer.prompt(addRolePrompts).then((answer) => {
               console.log(answer.addRole1);
               // TODO: SQL REQUEST: Add Role
+              console.log("Added Role")
+              routeApp();
             });
+
             break;
           case "<= Go Back":
             inquirer.prompt(topMenuPrompts).then((answer) => {
@@ -149,7 +169,10 @@ const routeApp = (route) => {
                   "\n"
               );
               // TODO: SQL REQUEST: Update Department
+              console.log("Updated Department")
+              routeApp();
             });
+
             break;
           case "An Employee":
             // 4b) UDPATE Employee
@@ -194,6 +217,8 @@ const routeApp = (route) => {
               console.log("Functions to Run: " + prompts);
             });
             // TODO: SQL REQUEST: Update Employee by Cycling Through const prompts array.
+            console.log("Updated Employee")
+            routeApp();
             break;
           case "A Role":
             // 4c) UPDATE Role
@@ -203,6 +228,8 @@ const routeApp = (route) => {
                 "Current Role: " + answer.updateRole1 + "\n" +
                 "New Role : " + answer.updateRole2)
               // TODO: SQL REQUEST: Update Role
+              console.log("Updated Role")
+              routeApp();
             })
             break;
           case "<= Go Back":
@@ -230,6 +257,8 @@ const routeApp = (route) => {
                     break;
                   case "Yes":
                     // TODO: SQL REQUEST: Delete Department
+                    console.log("Deleted Department")
+                    routeApp();
                     break;
                 };
               });
@@ -248,7 +277,9 @@ const routeApp = (route) => {
                     areYouSureEmp();
                     break;
                   case "Yes":
+                    console.log("Deleted Employee")
                     // TODO: SQL REQUEST: Delete Employee
+                    routeApp();
                     break;
                 };
               });
@@ -266,7 +297,9 @@ const routeApp = (route) => {
                     areYouSureRole();
                     break;
                   case "Yes":
+                    console.log("Deleted Role")
                     // TODO: SQL REQUEST: Delete Role
+                    routeApp();
                     break;
                 };
               });
