@@ -31,10 +31,11 @@ const {
   viewEmployeesBySalary,
 } = require("../db/dbRoutes/View");
 
+// Import Add Routes
+const { addDepartment, addEmployee, addRole } = require("../db/dbRoutes/Add");
+
 // Import utility for gettinganswers for Employee update
 const { getAnswers } = require("./getAnswers");
-
-
 
 // Import inquirer
 const inquirer = require("inquirer");
@@ -54,40 +55,23 @@ const routeApp = () => {
         inquirer.prompt(viewPrompts).then((answer) => {
           switch (answer.viewP) {
             case "Departments":
-              console.log("SQL REQUEST: View All Departments");
-              // TODO: SQL REQUEST: View All Departments
               viewAllDepartments();
-
               break;
             case "Employees":
               // 2a) VIEW Employees
               inquirer.prompt(viewEmployees).then((answer) => {
                 switch (answer.viewEmp) {
                   case "By Department":
-                    console.log(
-                      "SQL REQUEST: View All Employees By Department"
-                    );
-                    // TODO: SQL REQUEST: View All Employees By Department
-
-                    returnTop();
+                    viewEmployeesByDep();
                     break;
                   case "By Manager":
-                    console.log("SQL REQUEST: View All Employees By Manager");
-                    // TODO: SQL REQUEST: View All Employees By Manager
-
-                    returnTop();
+                    viewEmployeesByMan();
                     break;
                   case "By Role":
-                    console.log("SQL REQUEST: View All Employees By Role");
-                    // TODO: SQL REQUEST: View All Employees By Role
-
-                    returnTop();
+                    viewEmployeesByRole();
                     break;
                   case "By Salary":
-                    console.log("SQL REQUEST: View All Employees By Salary");
-                    // TODO: SQL REQUEST: View All Employees By Salary
-
-                    returnTop();
+                    viewEmployeesBySalary();
                     break;
                   case "<= Go Back":
                     inquirer.prompt(topMenuPrompts).then((answer) => {
@@ -98,10 +82,7 @@ const routeApp = () => {
               });
               break;
             case "Roles":
-              console.log("SQL REQUEST: View All Roles");
-              // TODO: SQL REQUEST: View All Roles
-
-              returnTop();
+              viewAllRoles();
               break;
             case "<= Go Back":
               inquirer.prompt(topMenuPrompts).then((answer) => {
@@ -119,12 +100,8 @@ const routeApp = () => {
               // 3a) ADD Department
               console.log("Add a Department");
               inquirer.prompt(addDepPrompts).then((answer) => {
-                console.log(answer.addDep1);
-                // TODO: SQL REQUEST: Add Department
-                console.log("Added Department");
-                returnTop();
+                addDepartment(answer);
               });
-
               break;
             case "An Employee":
               // 3b) ADD Employee

@@ -4,7 +4,6 @@ const inquirer = require("inquirer");
 // Import returnTop
 const { returnTop } = require("./returnTop");
 
-
 // Import employee update prompts
 const { updateEmpPrompts } = require("./prompts");
 
