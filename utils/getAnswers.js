@@ -23,7 +23,7 @@ const getAnswers = () => {
     inquirer.prompt(updateEmpPrompts).then((answer) => {
       // Create array of prompts to ask from updateEmp2
       const choices = answer.updateEmp2;
-      var choicesArr = choices.toString().split(",");
+      const choicesArr = choices.toString().split(",");
 
       console.log(
         "Employee to Update: " +
