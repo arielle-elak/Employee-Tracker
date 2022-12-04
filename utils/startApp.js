@@ -11,6 +11,7 @@ const {
   addEmpPrompts,
   addRolePrompts,
   // Update Prompts
+  updateEmpPrompts,
   updatePrompts,
   updateDepPrompts,
   updateRolePrompts,
@@ -34,8 +35,12 @@ const {
 // Import Add Routes
 const { addDepartment, addEmployee, addRole } = require("../db/dbRoutes/Add");
 
-// Import utility for gettinganswers for Employee update
-const { getAnswers } = require("./getAnswers");
+// Import Update Routes
+const {
+  updateDepartment,
+  updateEmployee,
+  updateRole,
+} = require("../db/dbRoutes/Update");
 
 // Import inquirer
 const inquirer = require("inquirer");
@@ -107,38 +112,15 @@ const routeApp = () => {
               // 3b) ADD Employee
               console.log("Add an Employee");
               inquirer.prompt(addEmpPrompts).then((answer) => {
-                console.log(
-                  "First Name: " +
-                    answer.addEmp1 +
-                    "\n" +
-                    "Last Name: " +
-                    answer.addEmp2 +
-                    "\n" +
-                    "Role: " +
-                    answer.addEmp3 +
-                    "\n" +
-                    "Manager " +
-                    answer.addEmp4 +
-                    "\n" +
-                    "Department" +
-                    answer.addEmp5 +
-                    "\n"
-                );
-                // TODO: SQL REQUEST: Add Employee
-                console.log("Added Employee");
-                returnTop();
+                addEmployee(answer);
               });
               break;
             case "A Role":
               // 3c) ADD Role
               console.log("Add a Role");
               inquirer.prompt(addRolePrompts).then((answer) => {
-                console.log(answer.addRole1);
-                // TODO: SQL REQUEST: Add Role
-                console.log("Added Role");
-                returnTop();
+                addRole(answer);
               });
-
               break;
             case "<= Go Back":
               inquirer.prompt(topMenuPrompts).then((answer) => {
@@ -156,25 +138,15 @@ const routeApp = () => {
               // 4a) UDPATE Department
               console.log("Update a Department");
               inquirer.prompt(updateDepPrompts).then((answer) => {
-                console.log(
-                  "Current Department: " +
-                    answer.updateDep1 +
-                    "\n" +
-                    "New Department: " +
-                    answer.updateDep2 +
-                    "\n"
-                );
-                // TODO: SQL REQUEST: Update Department
-                console.log("Updated Department");
-                returnTop();
+                updateDepartment(answer);
               });
-
               break;
             case "An Employee":
               // 4b) UDPATE Employee
               console.log("Update an Employee");
-              // Function to get answers from employee prompts
-              getAnswers();
+              inquirer.prompt(updateEmpPrompts).then((answers) => {
+                updateEmployee(answers);
+              });
               break;
             case "A Role":
               // 4c) UPDATE Role
@@ -280,9 +252,7 @@ const routeApp = () => {
   });
 };
 
-
-
-
 module.exports = {
-  startApp
+  startApp,
+  routeApp,
 };

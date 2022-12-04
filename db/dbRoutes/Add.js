@@ -7,10 +7,14 @@ function addDepartment(answer) {
 }
 
 function addEmployee() {
+  // TODO: SQL REQUST: Add Employee
+  console.log("Added Employee: " + answer.addEmp1 + " " + answer.addEmp2);
   returnTop();
 }
 
 function addRole() {
+  // TODO: SQL REQUEST: Add Role
+  console.log("Added Role: " + answer.addRole1);
   returnTop();
 }
 
