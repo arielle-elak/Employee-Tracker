@@ -21,22 +21,12 @@ const {
 
 const getAnswers = () => {
   inquirer.prompt(updateEmpPrompts).then((answers) => {
-    // Create array of prompts to ask from updateEmp2
-    const choices = answers.updateEmp2;
-    const choicesArr = choices.toString().split(",");
-    choicesArr.forEach((element) => console.log(element));
-    var empAnswers = {
-      updateEmpFName: "",
-      updateEmpLName: "",
-      updateEmpDep: "",
-      updateEmpRole: "",
-      updateEmpMan: "",
-      updateEmpSal: "",
-    };
+    // TODO: Select employee from db to update
+    
 
-    for (const key in empAnswers) {
-      console.log(`${key}: ${empAnswers[key]}`);
-    }
+
+
+    returnTop();
   });
 };
 

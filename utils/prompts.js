@@ -169,20 +169,7 @@ const updateEmpPrompts = [
     message: `Please select or start typing the employee you wish to update:`,
     // TODO Sync Choices with sql database table
     choices: ["SQL CHOICES"],
-  },
-  {
-    type: "checkbox",
-    name: "updateEmp2",
-    message: `What attribute(s) would you like to update?`,
-    choices: [
-      "First Name",
-      "Last Name",
-      "Role",
-      "Department",
-      "Manager",
-      "Salary",
-    ],
-  },
+  }
 ];
 
 // 4b1) UPDATE EMPLOYEE First Name
@@ -191,13 +178,7 @@ const updateEmpFName = [
     type: "input",
     name: "updateEmpFName",
     message: `What is the new First Name?`,
-    validate: async (input) => {
-      if (!input) {
-        return "First Name cannot be blank.";
-      }
-      return true;
-    },
-  },
+  }
 ];
 
 // 4b2) UPDATE EMPLOYEE Last Name
@@ -206,13 +187,7 @@ const updateEmpLName = [
     type: "input",
     name: "updateEmpLName",
     message: `What is the new Last Name?`,
-    validate: async (input) => {
-      if (!input) {
-        return "Last Name cannot be blank.";
-      }
-      return true;
-    },
-  },
+  }
 ];
 
 // 4b3) UPDATE EMPLOYEE Department
@@ -255,8 +230,8 @@ const updateEmpSal = [
     name: "updateEmpSal",
     message: `What is the new Salary?`,
     validate: async (input) => {
-      if (!input || Math.sign(num) === -1) {
-        return "Salary cannot be blank or negative.";
+      if (Math.sign(num) === -1) {
+        return "Salary cannot be negative.";
       }
       return true;
     },
