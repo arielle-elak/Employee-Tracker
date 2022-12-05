@@ -303,7 +303,11 @@ function viewAllDepartments() {
 
 function viewAllRoles() {
   console.log("Viewing All Roles");
-  returnTop();
+  db.query('SELECT role.id AS Id, role.title AS Role, department.name AS Department, role.salary AS Salary FROM role LEFT JOIN department on department.id = role.department_id;').then(([rows]) => {
+    let roles = rows;
+    console.table(roles);
+    returnTop();
+  });
 }
 
 // View Employee Routes
