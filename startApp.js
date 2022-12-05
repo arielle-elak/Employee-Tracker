@@ -1,6 +1,8 @@
 // Import inquirer
 const inquirer = require("inquirer");
 
+
+
 // Import utilities for asking prompts.
 const {
   // Main Menu
@@ -265,19 +267,19 @@ const returnTop = () => {
 function addDepartment(answer) {
   // TODO: SQL REQUEST: Add Department
   console.log("Added Department: " + answer.addDep1);
-  routeApp();
+  returnTop();
 }
 
 function addEmployee() {
   // TODO: SQL REQUST: Add Employee
   console.log("Added Employee: " + answer.addEmp1 + " " + answer.addEmp2);
-  routeApp();
+  returnTop();
 }
 
 function addRole() {
   // TODO: SQL REQUEST: Add Role
   console.log("Added Role: " + answer.addRole1);
-  routeApp();
+  returnTop();
 }
 
 // UPDATE
@@ -292,7 +294,7 @@ function updateDepartment(answer) {
   );
   // TODO: SQL REQUEST: Update Department
   console.log(`Updated Department from ${answer.Dep1} to ${answer.Dep2}`);
-  routeApp();
+  returnTop();
 }
 
 function updateEmployee(answers) {
@@ -307,7 +309,7 @@ function updateEmployee(answers) {
   console.log(
     `Updated Employee: ${employee}\nNew First Name: ${firstName}\nNew Last Name: ${lastName}\nNew Department: ${department}\nNew Role: ${role}\nNew Manager: ${manager}\nNew Salary: ${salary}`
   );
-  routeApp();
+  returnTop();
 }
 
 function updateRole(answer) {
@@ -323,19 +325,19 @@ function updateRole(answer) {
   console.log(
     `Updated Role from ${answer.updateRole1} to ${answer.updateRole2}`
   );
-  routeApp();
+  returnTop();
 }
 
 // VIEW
 function viewAllDepartments() {
   // TODO: SQL REQUEST: View All Departments
   console.log("Viewing All Departments");
-  routeApp();
+  returnTop();
 }
 
 function viewAllRoles() {
   console.log("Viewing All Roles");
-  routeApp();
+  returnTop();
 }
 
 // View Employee Routes
@@ -343,24 +345,25 @@ function viewAllRoles() {
 function viewEmployeesByDep() {
   // TODO: SQL REQUEST: View All Employees By Department
   console.log("Viewing All Employees by Department");
-  routeApp();
+  returnTop();
 }
 
 function viewEmployeesByMan() {
   console.log("Viewing All Employees by Manager");
-  routeApp();
+  returnTop();
 }
 
 function viewEmployeesByRole() {
   console.log("Viewing All Employees by Role");
-  routeApp();
+  returnTop();
 }
 
 function viewEmployeesBySalary() {
   console.log("Viewing All Employees by Salary");
-  routeApp();
+  returnTop();
 }
 
 module.exports = {
   startApp,
+  routeApp,
 };
