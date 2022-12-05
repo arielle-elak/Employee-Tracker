@@ -2,28 +2,7 @@
 const inquirer = require("inquirer");
 
 // Import utilities for asking prompts.
-const {
-  // Main Menu
-  topMenuPrompts,
-  // View Prompts
-  viewPrompts,
-  viewEmployees,
-  // Add Prompts
-  addPrompts,
-  addDepPrompts,
-  addEmpPrompts,
-  addRolePrompts,
-  // Update Prompts
-  updateEmpPrompts,
-  updatePrompts,
-  updateDepPrompts,
-  updateRolePrompts,
-  // Delete Prompts
-  deletePrompts,
-  deleteDepPrompts,
-  deleteEmpPrompts,
-  deleteRolePrompts,
-} = require("./utils/prompts");
+const prompts = require("./utils/prompts");
 
 // 1) Start the app
 const startApp = () => {
@@ -33,18 +12,18 @@ const startApp = () => {
 
 // Choose how to route the inquirer
 const routeApp = () => {
-  inquirer.prompt(topMenuPrompts).then((answer) => {
+  inquirer.prompt(prompts.topMenuPrompts).then((answer) => {
     switch (answer.topMenu) {
       // 2) VIEW MENU
       case "View":
-        inquirer.prompt(viewPrompts).then((answer) => {
+        inquirer.prompt(prompts.viewPrompts).then((answer) => {
           switch (answer.viewP) {
             case "Departments":
               viewAllDepartments();
               break;
             case "Employees":
               // 2a) VIEW Employees
-              inquirer.prompt(viewEmployees).then((answer) => {
+              inquirer.prompt(prompts.viewEmployees).then((answer) => {
                 switch (answer.viewEmp) {
                   case "By Department":
                     viewEmployeesByDep();
@@ -75,26 +54,26 @@ const routeApp = () => {
         break;
       // 3) ADD MENU
       case "Add":
-        inquirer.prompt(addPrompts).then((answer) => {
+        inquirer.prompt(prompts.addPrompts).then((answer) => {
           switch (answer.addP) {
             case "A Department":
               // 3a) ADD Department
               console.log("Add a Department");
-              inquirer.prompt(addDepPrompts).then((answer) => {
+              inquirer.prompt(prompts.addDepPrompts).then((answer) => {
                 addDepartment(answer);
               });
               break;
             case "An Employee":
               // 3b) ADD Employee
               console.log("Add an Employee");
-              inquirer.prompt(addEmpPrompts).then((answer) => {
+              inquirer.prompt(prompts.addEmpPrompts).then((answer) => {
                 addEmployee(answer);
               });
               break;
             case "A Role":
               // 3c) ADD Role
               console.log("Add a Role");
-              inquirer.prompt(addRolePrompts).then((answer) => {
+              inquirer.prompt(prompts.addRolePrompts).then((answer) => {
                 addRole(answer);
               });
               break;
@@ -106,26 +85,26 @@ const routeApp = () => {
         break;
       // 4) UPDATE
       case "Update":
-        inquirer.prompt(updatePrompts).then((answer) => {
+        inquirer.prompt(prompts.updatePrompts).then((answer) => {
           switch (answer.updateP) {
             case "A Department":
               // 4a) UDPATE Department
               console.log("Update a Department");
-              inquirer.prompt(updateDepPrompts).then((answer) => {
+              inquirer.prompt(prompts.updateDepPrompts).then((answer) => {
                 updateDepartment(answer);
               });
               break;
             case "An Employee":
               // 4b) UDPATE Employee
               console.log("Update an Employee");
-              inquirer.prompt(updateEmpPrompts).then((answers) => {
+              inquirer.prompt(prompts.updateEmpPrompts).then((answers) => {
                 updateEmployee(answers);
               });
               break;
             case "A Role":
               // 4c) UPDATE Role
               console.log("Update a Role");
-              inquirer.prompt(updateRolePrompts).then((answer) => {
+              inquirer.prompt(prompts.updateRolePrompts).then((answer) => {
                 console.log(
                   "Current Role: " +
                     answer.updateRole1 +
@@ -144,13 +123,13 @@ const routeApp = () => {
         break;
       // 5) DELETE
       case "Delete":
-        inquirer.prompt(deletePrompts).then((answer) => {
+        inquirer.prompt(prompts.deletePrompts).then((answer) => {
           switch (answer.deleteP) {
             case "A Department":
               // 5a) DELETE Department
               console.log("Delete a Department");
               const areYouSureDep = () => {
-                inquirer.prompt(deleteDepPrompts).then((answer) => {
+                inquirer.prompt(prompts.deleteDepPrompts).then((answer) => {
                   console.log("Department to Delete: " + answer.deleteDep1);
                   console.log("Are You Sure?: " + answer.deleteDep2);
                   switch (answer.deleteDep2) {
@@ -170,7 +149,7 @@ const routeApp = () => {
               // 5b) DELETE Employee
               console.log("Delete an Employee");
               const areYouSureEmp = () => {
-                inquirer.prompt(deleteEmpPrompts).then((answer) => {
+                inquirer.prompt(prompts.deleteEmpPrompts).then((answer) => {
                   console.log("Employee to Delete: " + answer.deleteEmp1);
                   console.log("Are You Sure?: " + answer.deleteEmp2);
                   switch (answer.deleteEmp2) {
@@ -189,7 +168,7 @@ const routeApp = () => {
               // 5c) DELETE Role
               console.log("Delete a Role");
               const areYouSureRole = () => {
-                inquirer.prompt(deleteRolePrompts).then((answer) => {
+                inquirer.prompt(prompts.deleteRolePrompts).then((answer) => {
                   console.log("Role to Delete: " + answer.deleteRole1);
                   console.log("Are You Sure?: " + answer.deleteRole2);
                   switch (answer.deleteRole2) {
