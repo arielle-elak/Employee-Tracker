@@ -1,23 +1,14 @@
-// Import express
 const express = require('express');
+const sequelize = require('./config/connection');
+const { startApp } = require('./startApp');
 
-// Connection config import
-const connection = require('./config/connection');
-
-// Use app to say when express needs to be used
 const app = express();
-// Designate port for express (either from .env or 3001 by default)
 const PORT = process.env.PORT || 3001;
 
-// Import startApp js for beginning the inquirer prompts.
-const { startApp } = require("./startApp");
-
-// Express middleware to interpret json input
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Connect to database
-// Start Inquirer program
-connection.sync({ force: false }).then(() => {
+// turn on connection to db and server
+sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => startApp());
 });

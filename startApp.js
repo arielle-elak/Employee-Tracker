@@ -1,8 +1,14 @@
 // Import inquirer
 const inquirer = require("inquirer");
 
+// Show SQL results in a neat table
+require("console.table");
+
 // Import utilities for asking prompts.
 const prompts = require("./utils/prompts");
+
+// Import connection to SQL database
+const db = require("./config/connection")
 
 // 1) Start the app
 const startApp = () => {
@@ -287,8 +293,11 @@ function updateRole(answer) {
 
 // VIEW
 function viewAllDepartments() {
-  // TODO: SQL REQUEST: View All Departments
   console.log("Viewing All Departments");
+  db.query('SELECT * FROM department').then(([rows]) => {
+    let departments = rows;
+    console.table(departments);
+  });
   returnTop();
 }
 
