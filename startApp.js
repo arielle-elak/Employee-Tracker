@@ -59,9 +59,7 @@ const routeApp = () => {
                     viewEmployeesBySalary();
                     break;
                   case "<= Go Back":
-                    inquirer.prompt(topMenuPrompts).then((answer) => {
-                      routeApp(answer.topMenu);
-                    });
+                    routeApp();
                     break;
                 }
               });
@@ -70,9 +68,7 @@ const routeApp = () => {
               viewAllRoles();
               break;
             case "<= Go Back":
-              inquirer.prompt(topMenuPrompts).then((answer) => {
-                routeApp(answer.topMenu);
-              });
+              routeApp();
               break;
           }
         });
@@ -103,9 +99,7 @@ const routeApp = () => {
               });
               break;
             case "<= Go Back":
-              inquirer.prompt(topMenuPrompts).then((answer) => {
-                routeApp(answer.topMenu);
-              });
+              routeApp();
               break;
           }
         });
@@ -143,9 +137,7 @@ const routeApp = () => {
               });
               break;
             case "<= Go Back":
-              inquirer.prompt(topMenuPrompts).then((answer) => {
-                routeApp(answer.topMenu);
-              });
+              routeApp();
               break;
           }
         });
@@ -218,9 +210,7 @@ const routeApp = () => {
               areYouSureRole();
               break;
             case "<= Go Back":
-              inquirer.prompt(topMenuPrompts).then((answer) => {
-                routeApp(answer.topMenu);
-              });
+              routeApp();
               break;
           }
         });
