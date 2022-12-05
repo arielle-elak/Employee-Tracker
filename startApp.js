@@ -159,8 +159,7 @@ const routeApp = () => {
                       break;
                     case "Yes":
                       // TODO: SQL REQUEST: Delete Department
-                      console.log("Deleted Department");
-                      returnTop();
+                      deleteDepartment(answer);
                       break;
                   }
                 });
@@ -179,9 +178,7 @@ const routeApp = () => {
                       areYouSureEmp();
                       break;
                     case "Yes":
-                      console.log("Deleted Employee");
-                      // TODO: SQL REQUEST: Delete Employee
-                      returnTop();
+                      deleteEmployee(answer);
                       break;
                   }
                 });
@@ -200,9 +197,7 @@ const routeApp = () => {
                       areYouSureRole();
                       break;
                     case "Yes":
-                      console.log("Deleted Role");
-                      // TODO: SQL REQUEST: Delete Role
-                      returnTop();
+                      deleteRole(answer);
                       break;
                   }
                 });
@@ -343,6 +338,23 @@ function viewEmployeesByRole() {
 
 function viewEmployeesBySalary() {
   console.log("Viewing All Employees by Salary");
+  returnTop();
+}
+
+// DELETE
+
+function deleteEmployee(answer) {
+  console.log("Deleted Employee: " + answer.deleteEmp1);
+  returnTop();
+}
+
+function deleteDepartment(answer) {
+  console.log("Deleted Department: " + answer.deleteDep1);
+  returnTop();
+}
+
+function deleteRole(answer) {
+  console.log("Deleted Role: " + answer.deleteRole1);
   returnTop();
 }
 
