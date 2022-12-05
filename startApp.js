@@ -284,7 +284,9 @@ function updateDepartment(answer) {
       "\n"
   );
   // TODO: SQL REQUEST: Update Department
-  console.log(`Updated Department from ${answer.Dep1} to ${answer.Dep2}`);
+  console.log(
+    `Updated Department from ` + answer.updateDep1 + ` to ` + answer.updateDep2
+  );
   returnTop();
 }
 
@@ -314,7 +316,7 @@ function updateRole(answer) {
   );
   // TODO: SQL REQUEST: Update Department
   console.log(
-    `Updated Role from ${answer.updateRole1} to ${answer.updateRole2}`
+    `Updated Role from ` + answer.updateRole1 + ` to ` + answer.updateRole2
   );
   returnTop();
 }
