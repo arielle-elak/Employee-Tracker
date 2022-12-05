@@ -1,8 +1,6 @@
 // Import inquirer
 const inquirer = require("inquirer");
 
-
-
 // Import utilities for asking prompts.
 const {
   // Main Menu
@@ -88,7 +86,6 @@ const routeApp = () => {
               console.log("Add a Department");
               inquirer.prompt(addDepPrompts).then((answer) => {
                 addDepartment(answer);
-                returnTop();
               });
               break;
             case "An Employee":
@@ -96,7 +93,6 @@ const routeApp = () => {
               console.log("Add an Employee");
               inquirer.prompt(addEmpPrompts).then((answer) => {
                 addEmployee(answer);
-                returnTop();
               });
               break;
             case "A Role":
@@ -104,7 +100,6 @@ const routeApp = () => {
               console.log("Add a Role");
               inquirer.prompt(addRolePrompts).then((answer) => {
                 addRole(answer);
-                returnTop();
               });
               break;
             case "<= Go Back":
@@ -124,7 +119,6 @@ const routeApp = () => {
               console.log("Update a Department");
               inquirer.prompt(updateDepPrompts).then((answer) => {
                 updateDepartment(answer);
-                returnTop();
               });
               break;
             case "An Employee":
@@ -132,7 +126,6 @@ const routeApp = () => {
               console.log("Update an Employee");
               inquirer.prompt(updateEmpPrompts).then((answers) => {
                 updateEmployee(answers);
-                returnTop();
               });
               break;
             case "A Role":
@@ -146,9 +139,7 @@ const routeApp = () => {
                     "New Role : " +
                     answer.updateRole2
                 );
-                // TODO: SQL REQUEST: Update Role
-                console.log("Updated Role");
-                returnTop();
+                updateRole(answer);
               });
               break;
             case "<= Go Back":
@@ -270,13 +261,13 @@ function addDepartment(answer) {
   returnTop();
 }
 
-function addEmployee() {
+function addEmployee(answer) {
   // TODO: SQL REQUST: Add Employee
   console.log("Added Employee: " + answer.addEmp1 + " " + answer.addEmp2);
   returnTop();
 }
 
-function addRole() {
+function addRole(answer) {
   // TODO: SQL REQUEST: Add Role
   console.log("Added Role: " + answer.addRole1);
   returnTop();
