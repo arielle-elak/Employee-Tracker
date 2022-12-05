@@ -1,3 +1,4 @@
+// New instance of sequelize will start up with SQL inquiry as well as initially connecting to database
 const Sequelize = require('sequelize');
 require('dotenv').config();
 

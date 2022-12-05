@@ -294,11 +294,11 @@ function updateRole(answer) {
 // VIEW
 function viewAllDepartments() {
   console.log("Viewing All Departments");
-  db.query('SELECT * FROM department').then(([rows]) => {
+  db.query('SELECT department.id AS Id, department.name AS Department FROM department').then(([rows]) => {
     let departments = rows;
     console.table(departments);
+    returnTop();
   });
-  returnTop();
 }
 
 function viewAllRoles() {
