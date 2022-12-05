@@ -10,7 +10,7 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 // Import startApp js for beginning the inquirer prompts.
-const { startApp } = require("./utils/startApp");
+const { startApp } = require("./startApp");
 
 // Express middleware to interpret json input
 app.use(express.json());

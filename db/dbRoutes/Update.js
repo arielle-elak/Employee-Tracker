@@ -1,4 +1,4 @@
-const { returnTop } = require("../../utils/returnTop");
+const { returnTop } = require("../../utils/routeApp");
 
 function updateDepartment(answer) {
   console.log(

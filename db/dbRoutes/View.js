@@ -1,4 +1,4 @@
-const { returnTop } = require("../../utils/returnTop");
+const { returnTop } = require("../../utils/routeApp");
 
 function viewAllDepartments() {
   // TODO: SQL REQUEST: View All Departments

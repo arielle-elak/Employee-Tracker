@@ -1,3 +1,6 @@
+// Import inquirer
+const inquirer = require("inquirer");
+
 // Import utilities for asking prompts.
 const {
   // Main Menu
@@ -42,11 +45,8 @@ const {
   updateRole,
 } = require("../db/dbRoutes/Update");
 
-// Import inquirer
-const inquirer = require("inquirer");
-
 // Choose how to route the inquirer
-module.exports.routeApp = () => {
+const routeApp = () => {
   inquirer.prompt(topMenuPrompts).then((answer) => {
     switch (answer.topMenu) {
       // 2) VIEW MENU
@@ -240,8 +240,35 @@ module.exports.routeApp = () => {
               break;
           }
         });
-
         break;
     }
   });
+};
+
+// Return to top menu or end the app
+const returnTop = () => {
+  inquirer
+    .prompt({
+      type: "list",
+      name: "returntoTop",
+      message: "Would you like to perform another action?",
+      choices: ["Yes", "No"],
+    })
+    .then((answer) => {
+      switch (answer.returntoTop) {
+        case "Yes":
+          routeApp();
+          break;
+        case "No":
+          console.log(
+            "Thanks for using!\nYou will find a log of changes made in the 'session_log' file.\nYou may now type CTRL + C to end this session.\nTo start again, type 'node server'."
+          );
+          break;
+      }
+    });
+};
+
+module.exports = {
+  routeApp,
+  returnTop,
 };

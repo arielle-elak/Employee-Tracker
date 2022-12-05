@@ -1,4 +1,4 @@
-const { returnTop } = require("../../utils/returnTop");
+const { returnTop } = require("../../utils/routeApp");
 
 function addDepartment(answer) {
   // TODO: SQL REQUEST: Add Department

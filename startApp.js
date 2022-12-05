@@ -1,5 +1,4 @@
-// Import Router Util
-const { routeApp } = require("./routeApp");
+const { routeApp } = require("./utils/routeApp");
 
 // 1) Start the app
 const startApp = () => {
