@@ -12,15 +12,21 @@ class Connection {
   // --------------------------
 
   viewAllDepartments() {
-    return this.query.promise().query();
+      return this.query.promise().query(
+        "SELECT department.id AS ID, department.name AS Department FROM department"
+    );
   }
 
   viewAllEmployees() {
-    return this.query.promise().query();
+      return this.query.promise().query(
+        "SELECT employee.id AS ID, employee.first_name AS First Name, employee.last_name AS Last Name, role.title AS Role, department.name AS Department, role.salary AS Salary, CONCAT(manager.first_name, ' ', manager.last_name) AS Manager FROM employee LEFT JOIN role on employee.role_id = role.id LEFT JOIN department on role.department_id = department.id LEFT JOIN employee manager on manager.id = employee.manager_id"
+    );
   }
 
   viewAllRoles() {
-    return this.query.promise().query();
+    return this.query.promise().query(
+        "SELECT role.id AS Id, role.title AS Role, department.name AS Department, role.salary AS Salary FROM role LEFT JOIN department on department.id = role.department_id;"
+      );
   }
 
   // --------------------------
