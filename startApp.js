@@ -1,5 +1,8 @@
 // Load dependencies for inquirer and db connection
 const { prompt } = require("inquirer");
+const db = require("../db");
+// Load table format for console log
+require("console.table");
 
 // 1) Start the app
 const startApp = () => {
@@ -77,4 +80,60 @@ const routeApp = () => {
   });
 };
 
+// Functions for displaying and enacting database changes
+
+// --------------------------
+// ~~~~~~~~~~ VIEW ~~~~~~~~~~
+// --------------------------
+
+function viewAllDepartments() {
+  db.fetchAllDepartments()
+    .then(([rows]) => {
+      let departments = rows;
+      console.log("\n");
+      console.table(departments);
+    })
+    .then(() => routeApp());
+}
+
+function viewEmployeesByDepartment() {}
+
+function viewEmployeesByRole() {}
+
+function viewEmployeesByManager() {}
+
+function viewAllRoles() {}
+
+// --------------------------
+// ~~~~~~~~~~ ADD ~~~~~~~~~~
+// --------------------------
+
+function addDepartment() {}
+
+function addEmployee() {}
+
+function addRole() {}
+
+// --------------------------
+// ~~~~~~~~~~ UPDATE ~~~~~~~~~~
+// --------------------------
+
+function updateDepartment() {}
+
+function updateEmployee() {}
+
+function updateRole() {}
+
+// --------------------------
+// ~~~~~~~~~~ DELETE ~~~~~~~~~~
+// --------------------------
+
+function deleteDepartment() {}
+
+function deleteEmployee() {}
+
+function deleteRole() {}
+
 startApp();
+
+module.exports = { startApp, routeApp };
