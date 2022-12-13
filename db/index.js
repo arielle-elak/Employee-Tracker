@@ -1,34 +1,34 @@
-const query = require("../config/connection");
+const connection = require("./connection");
 
 // Connection class constructor connects to the database each time a NEW iteration is called
 // Within object, there are various possible types of queries to make
-class Connection {
-  constructor(query) {
-    this.query = query;
+class DB {
+  constructor(connection) {
+    this.connection = connection;
   }
 
   // --------------------------
   // ~~~~~~~~~~ VIEW ~~~~~~~~~~
   // --------------------------
 
-  viewAllDepartments() {
-    return this.query
+  fetchAllDepartments() {
+    return this.connection
       .promise()
       .query(
         "SELECT department.id AS ID, department.name AS Department FROM department"
       );
   }
 
-  viewAllEmployees() {
-    return this.query
+  fetchAllEmployees() {
+    return this.connection
       .promise()
       .query(
         "SELECT employee.id AS ID, employee.first_name AS First Name, employee.last_name AS Last Name, role.title AS Role, department.name AS Department, role.salary AS Salary, CONCAT(manager.first_name, ' ', manager.last_name) AS Manager FROM employee LEFT JOIN role on employee.role_id = role.id LEFT JOIN department on role.department_id = department.id LEFT JOIN employee manager on manager.id = employee.manager_id"
       );
   }
 
-  viewAllRoles() {
-    return this.query
+  fetchAllRoles() {
+    return this.connection
       .promise()
       .query(
         "SELECT role.id AS Id, role.title AS Role, department.name AS Department, role.salary AS Salary FROM role LEFT JOIN department on department.id = role.department_id;"
@@ -41,19 +41,21 @@ class Connection {
 
   // Add Department based on passed department
   addDepartment(department) {
-    return this.query
+    return this.connection
       .promise()
       .query("INSERT INTO department SET ?", department);
   }
 
   // Add Employee as per values in employee object
   addEmployee(employee) {
-    return this.query.promise().query("INSERT INTO employee SET ?", employee);
+    return this.connection
+      .promise()
+      .query("INSERT INTO employee SET ?", employee);
   }
 
   // Add Role based on passed role
   addRole(role) {
-    return this.query.promise().query("INSERT INTO role SET ?", role);
+    return this.connection.promise().query("INSERT INTO role SET ?", role);
   }
 
   // ----------------------------
@@ -62,7 +64,7 @@ class Connection {
 
   // Update passed Department based on departmentUpdate variable, find departmentId to associate update
   updateDepartment(departmentUpdate, departmentId) {
-    return this.query
+    return this.connection
       .promise()
       .query("UPDATE department SET department_name = ? WHERE id = ?", [
         departmentUpdate,
@@ -79,7 +81,7 @@ class Connection {
     employeeManager
   ) {
     if (employeeNameF) {
-      return this.query
+      return this.connection
         .promise()
         .query("UPDATE employee SET first_name = ? WHERE id = ?", [
           employeeNameF,
@@ -87,7 +89,7 @@ class Connection {
         ]);
     }
     if (employeeNameL) {
-      return this.query
+      return this.connection
         .promise()
         .query("UPDATE employee SET last_name = ? WHERE id = ?", [
           employeeNameL,
@@ -95,7 +97,7 @@ class Connection {
         ]);
     }
     if (employeeRole) {
-      return this.query
+      return this.connection
         .promise()
         .query("UPDATE employee SET role_id = ? WHERE id = ?", [
           employeeRole,
@@ -103,7 +105,7 @@ class Connection {
         ]);
     }
     if (employeeManager) {
-      return this.query
+      return this.connection
         .promise()
         .query("UPDATE employee SET manager_id = ? WHERE id = ?", [
           employeeManager,
@@ -114,7 +116,7 @@ class Connection {
 
   // Update Role based on the passed role value
   updateRole(roleUpdate, roleId) {
-    return this.query
+    return this.connection
       .promise()
       .query("UPDATE role SET role_title = ? WHERE id = ?", [
         roleUpdate,
@@ -128,22 +130,24 @@ class Connection {
 
   // Delete selected department
   deleteDepartment(departmentId) {
-    return this.query
+    return this.connection
       .promise()
       .query("DELETE FROM department WHERE id = ?", departmentId);
   }
 
   // Delete selected employee
   deleteEmployee(employeeId) {
-    return this.query
+    return this.connection
       .promise()
       .query("DELETE FROM employee WHERE id = ?", employeeId);
   }
 
   // Delete selected role
   deleteRole(roleId) {
-    return this.query.promise().query("DELETE FROM role WHERE id =?", roleId);
+    return this.connection
+      .promise()
+      .query("DELETE FROM role WHERE id =?", roleId);
   }
 }
 
-module.exports = new Connection(query);
+module.exports = new DB(connection);
