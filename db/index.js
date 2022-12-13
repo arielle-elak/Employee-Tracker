@@ -11,7 +11,7 @@ class DB {
     return this.connection
       .promise()
       .query(
-        "SELECT department.id AS ID, department.name AS Department FROM department"
+        "SELECT department.id AS ID, department.name FROM department"
       );
   }
 
@@ -30,7 +30,6 @@ class DB {
         "SELECT role.id AS Id, role.title AS Role, department.name AS Department, role.salary AS Salary FROM role LEFT JOIN department on department.id = role.department_id;"
       );
   }
-
 
   // Add Department based on passed department
   createDepartment(department) {

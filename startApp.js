@@ -1,5 +1,6 @@
 // Load dependencies for inquirer and db connection
 const { prompt } = require("inquirer");
+// Each new instance of the db object will connect and perform the requested function
 const db = require("./db");
 // Load table format for console log
 require("console.table");
@@ -37,8 +38,53 @@ const routeApp = () => {
               viewAllDepartments();
               break;
             case "Employees":
+              prompt([
+                {
+                  type: "list",
+                  name: "viewEmp",
+                  message: `How would your like to view employees?`,
+                  choices: [
+                    "By Department",
+                    "By Manager",
+                    "By Role",
+                    "<= Go Back",
+                  ],
+                },
+              ]).then((viewChoice) => {
+                let answer = viewChoice.viewEmp;
+                switch (answer) {
+                  case "By Department":
+                    db.fetchAllDepartments().then(([rows]) => {
+                      let departments = rows;
+                      const departmentChoices = departments.map(
+                        ({ id, name }) => ({
+                          name: name,
+                          value: id,
+                        })
+                      );
+                      prompt([
+                        {
+                          type: "autocomplete",
+                          name: "viewEmpDep",
+                          message:
+                            "Which department's employees would you like to view?",
+                          choices: departmentChoices,
+                        },
+                      ]);
+                    });
+                    break;
+                  case "By Manager":
+                    break;
+                  case "By Role":
+                    break;
+                  case "Go Back =>":
+                    routeApp();
+                    break;
+                }
+              });
               break;
             case "Roles":
+              viewAllRoles();
               break;
             case "<= Go Back":
               routeApp();

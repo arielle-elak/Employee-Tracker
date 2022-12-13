@@ -36,7 +36,6 @@ const topMenuPrompts = [
         "By Department",
         "By Manager",
         "By Role",
-        "By Salary",
         "<= Go Back"
       ],
     },
