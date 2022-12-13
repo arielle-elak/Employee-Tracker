@@ -1,6 +1,6 @@
 // Load dependencies for inquirer and db connection
 const { prompt } = require("inquirer");
-const db = require("../db");
+const db = require("./db");
 // Load table format for console log
 require("console.table");
 
@@ -135,5 +135,3 @@ function deleteEmployee() {}
 function deleteRole() {}
 
 startApp();
-
-module.exports = { startApp, routeApp };
