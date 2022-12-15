@@ -185,24 +185,34 @@ function addDepartment() {
 function addEmployee() {}
 
 function addRole() {
-  prompt([
-    {
-      type: "input",
-      name: "addRole",
-      message: "What is the name of the new Role?",
-    },
-    {
-      type: "list",
-      name: "associateDep",
-      message: "Which Department is this Role associated with?",
-    },
-  ]);
-  then((role) => {
-    db.createDepartment(role)
-      .then(() =>
-        console.log(`${name.addDep} has been added to the list of Departments.`)
-      )
-      .then(() => routeApp());
+  db.fetchAllDepartments().then(([rows]) => {
+    let departments = rows;
+    const departmentChoices = departments.map(({ id, name }) => ({
+      name: name,
+      value: id,
+    }));
+
+    prompt([
+      {
+        name: "title",
+        message: "What is the name of the role?",
+      },
+      {
+        name: "salary",
+        message: "What is the salary of the role?",
+      },
+      {
+        type: "list",
+        name: "department_id",
+        message: "Which department does the role belong to?",
+        choices: departmentChoices,
+      },
+    ]).then((role) => {
+      db.createRole(role)
+        .then(console.log(role))
+        .then(() => console.log(`Added ${role.title} to the database`))
+        .then(() => routeApp());
+    });
   });
 }
 
