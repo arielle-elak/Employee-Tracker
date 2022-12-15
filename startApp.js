@@ -57,7 +57,24 @@ const routeApp = () => {
             message: `What would you like to add?`,
             choices: ["A Department", "An Employee", "A Role", "<= Go Back"],
           },
-        ]);
+        ])
+        .then((add) => {
+          let answer = add.addP;
+          switch (answer) {
+            case "A Department":
+              addDepartment();
+              break;
+            case "An Employee":
+              addEmployee();
+              break;
+            case "A Role":
+              addRole();
+              break;
+            case "<= Go Back":
+              routeApp();
+              break;
+          }
+        });
         break;
       case "Update":
         prompt([
@@ -67,7 +84,23 @@ const routeApp = () => {
             message: `What would you like to update?`,
             choices: ["A Department", "An Employee", "A Role", "<= Go Back"],
           },
-        ]);
+        ]).then((update) => {
+          let answer = update.updateP;
+          switch (answer) {
+            case "A Department":
+              updateDepartment();
+              break;
+            case "An Employee":
+              updateEmployee();
+              break;
+            case "A Role":
+              updateRole();
+              break;
+            case "<= Go Back":
+              routeApp();
+              break;
+          }
+        });
         break;
       case "Delete":
         prompt([
@@ -77,7 +110,23 @@ const routeApp = () => {
             message: `What would you like to delete?`,
             choices: ["A Department", "An Employee", "A Role", "<= Go Back"],
           },
-        ]);
+        ]).then((remove) => {
+          let answer = remove.deleteP;
+          switch (answer) {
+            case "A Department":
+              deleteDepartment();
+              break;
+            case "An Employee":
+              deleteEmployee();
+              break;
+            case "A Role":
+              deleteRole();
+              break;
+            case "<= Go Back":
+              routeApp();
+              break;
+          }
+        });
         break;
     }
   });
