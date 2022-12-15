@@ -92,9 +92,7 @@ const routeApp = () => {
 function viewAllDepartments() {
   db.fetchAllDepartments()
     .then(([rows]) => {
-      let departments = rows;
-      console.log("\n");
-      console.table(departments);
+      console.table(rows);
     })
     .then(() => routeApp());
 }
@@ -102,9 +100,7 @@ function viewAllDepartments() {
 function viewAllRoles() {
   db.fetchAllRoles()
     .then(([rows]) => {
-      let roles = rows;
-      console.log("\n");
-      console.table(roles);
+      console.table(rows);
     })
     .then(() => routeApp());
 }
