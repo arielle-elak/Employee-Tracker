@@ -71,7 +71,7 @@ const routeApp = () => {
                           choices: departmentChoices,
                         },
                       ])
-                        .then((res) => db.viewEmployeesByDepartment())
+                        .then(view => db.viewEmployeesByDepartment(view.viewEmpDep))
                         .then(([rows]) => {
                           let employees = rows;
                           console.log("\n");
