@@ -38,57 +38,7 @@ const routeApp = () => {
               viewAllDepartments();
               break;
             case "Employees":
-              prompt([
-                {
-                  type: "list",
-                  name: "viewEmp",
-                  message: `How would your like to view employees?`,
-                  choices: [
-                    "By Department",
-                    "By Manager",
-                    "By Role",
-                    "<= Go Back",
-                  ],
-                },
-              ]).then((viewChoice) => {
-                let answer = viewChoice.viewEmp;
-                switch (answer) {
-                  case "By Department":
-                    db.fetchAllDepartments().then(([rows]) => {
-                      let departments = rows;
-                      const departmentChoices = departments.map(
-                        ({ id, name }) => ({
-                          name: name,
-                          value: id,
-                        })
-                      );
-                      prompt([
-                        {
-                          type: "list",
-                          name: "viewEmpDep",
-                          message:
-                            "Which department's employees would you like to view?",
-                          choices: departmentChoices,
-                        },
-                      ])
-                        .then(view => db.viewEmployeesByDepartment(view.viewEmpDep))
-                        .then(([rows]) => {
-                          let employees = rows;
-                          console.log("\n");
-                          console.table(employees);
-                        })
-                        .then(() => routeApp());
-                    });
-                    break;
-                  case "By Manager":
-                    break;
-                  case "By Role":
-                    break;
-                  case "Go Back =>":
-                    routeApp();
-                    break;
-                }
-              });
+              viewAllEmployees();
               break;
             case "Roles":
               viewAllRoles();
@@ -149,16 +99,22 @@ function viewAllDepartments() {
     .then(() => routeApp());
 }
 
-function viewEmployeesByRole() {}
-
-function viewEmployeesByManager() {}
-
 function viewAllRoles() {
   db.fetchAllRoles()
     .then(([rows]) => {
       let roles = rows;
       console.log("\n");
       console.table(roles);
+    })
+    .then(() => routeApp());
+}
+
+function viewAllEmployees() {
+  db.fetchAllEmployees()
+    .then(([rows]) => {
+      let employees = rows;
+      console.log("\n");
+      console.table(employees);
     })
     .then(() => routeApp());
 }
