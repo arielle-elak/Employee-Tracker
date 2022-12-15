@@ -168,11 +168,43 @@ function viewAllEmployees() {
 // ~~~~~~~~~~ ADD ~~~~~~~~~~
 // --------------------------
 
-function addDepartment() {}
+function addDepartment() {
+  prompt([
+    {
+      name: "name",
+      message: "What is the name of the department?",
+    },
+  ]).then((res) => {
+    let name = res;
+    db.createDepartment(name)
+      .then(() => console.log(`The ${name.name} department has been added.`))
+      .then(() => routeApp());
+  });
+}
 
 function addEmployee() {}
 
-function addRole() {}
+function addRole() {
+  prompt([
+    {
+      type: "input",
+      name: "addRole",
+      message: "What is the name of the new Role?",
+    },
+    {
+      type: "list",
+      name: "associateDep",
+      message: "Which Department is this Role associated with?",
+    },
+  ]);
+  then((role) => {
+    db.createDepartment(role)
+      .then(() =>
+        console.log(`${name.addDep} has been added to the list of Departments.`)
+      )
+      .then(() => routeApp());
+  });
+}
 
 // --------------------------
 // ~~~~~~~~~~ UPDATE ~~~~~~~~~~
