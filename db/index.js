@@ -10,9 +10,7 @@ class DB {
   fetchAllDepartments() {
     return this.connection
       .promise()
-      .query(
-        "SELECT department.id AS ID, department.name FROM department"
-      );
+      .query("SELECT department.id AS ID, department.name FROM department");
   }
 
   fetchAllEmployees() {
@@ -28,6 +26,14 @@ class DB {
       .promise()
       .query(
         "SELECT role.id AS Id, role.title AS Role, department.name AS Department, role.salary AS Salary FROM role LEFT JOIN department on department.id = role.department_id;"
+      );
+  }
+
+  viewEmployeesByDepartment() {
+    return this.connection
+      .promise()
+      .query(
+        "SELECT employee.id, employee.first_name, employee.last_name, role.title FROM employee LEFT JOIN role on employee.role_id = role.id LEFT JOIN department department on role.department_id = department.id"
       );
   }
 

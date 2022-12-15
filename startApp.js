@@ -64,13 +64,20 @@ const routeApp = () => {
                       );
                       prompt([
                         {
-                          type: "autocomplete",
+                          type: "list",
                           name: "viewEmpDep",
                           message:
                             "Which department's employees would you like to view?",
                           choices: departmentChoices,
                         },
-                      ]);
+                      ])
+                        .then((res) => db.viewEmployeesByDepartment())
+                        .then(([rows]) => {
+                          let employees = rows;
+                          console.log("\n");
+                          console.table(employees);
+                        })
+                        .then(() => routeApp());
                     });
                     break;
                   case "By Manager":
@@ -142,13 +149,19 @@ function viewAllDepartments() {
     .then(() => routeApp());
 }
 
-function viewEmployeesByDepartment() {}
-
 function viewEmployeesByRole() {}
 
 function viewEmployeesByManager() {}
 
-function viewAllRoles() {}
+function viewAllRoles() {
+  db.fetchAllRoles()
+    .then(([rows]) => {
+      let roles = rows;
+      console.log("\n");
+      console.table(roles);
+    })
+    .then(() => routeApp());
+}
 
 // --------------------------
 // ~~~~~~~~~~ ADD ~~~~~~~~~~
