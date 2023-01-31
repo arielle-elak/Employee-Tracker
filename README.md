@@ -19,6 +19,8 @@ For this project, we created a simple SQL database which when prompted within th
 Since this project is not deployed, once you have copied the repo, you will need to use the command "npm i" in your bash terminal. The node_modules folder has been added to the .gitignore file for simplicity. You will then need to add the schema and seeds located in the db folder.
 
 ## Usage
+Please see the following video link for an explanation on how to use this app:
+https://drive.google.com/file/d/1_wG0e2iHWq9lZ-WRbQ2h0Of8BpzyJO_w/view
 
 
 ## Contributing
